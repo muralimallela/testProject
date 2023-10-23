@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SSIT : Sai Spurthi Institute of Technology</title>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppi');
+		@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Space Grotesk', sans-serif;
+		}
+
+		body {
+			background-image: url('images/back1.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			color: white;
+		}
+
+		.header {
+			position: fixed;
+			background-color: #162938;
+			color: #fff;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 1px 70px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			z-index: 99;
+		}
+
+		::-webkit-scrollbar {
+			width: 1px;
+			background:#162938;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background:#fff;
+			border-radius: 6px;
+		}
+
+		.navigation a {
+			position: relative;
+			font-size: 1.1em;
+			color: #fff;
+			text-decoration: none;
+			font-weight: 500;
+			margin-left: 10px;
+		}
+
+		.navigation a::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: -7px;
+			width: 100%;
+			height: 3px;
+			background: #fff;
+			border-radius: 5px;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+		}
+
+		.navigation a:hover::after {
+			transform-origin: left;
+			transform: scaleX(1);
+		}
+
+		.navigation .btnlogin-user {
+			width: 90px;
+			height: 30px;
+			background: transparent;
+			border: 2px solid #fff;
+			outline: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 1.1em;
+			color: #fff;
+			font-weight: 500;
+			margin-left: 10px;
+			transition: 0.5s;
+		}
+
+		.navigation .btnlogin-user:hover {
+			background: #fff;
+			color: #162938;
+		}
+
+		.navigation .btnlogin-admin {
+			width: 140px;
+			height: 30px;
+			background: transparent;
+			border: 2px solid #fff;
+			outline: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 1.1em;
+			color: #fff;
+			font-weight: 500;
+			margin-left: 10px;
+			transition: 0.5s;
+		}
+
+		.navigation .btnlogin-admin:hover {
+			background: #fff;
+			color: #162938;
+		}
+
+		.middle {
+			text-align: center;
+			padding-top: 50px;
+		}
+
+		.filter {
+			background-color: rgba(248, 249, 250, 0.1);
+		}
+
+		.card {
+			border: 2px solid rgb(225, 225, 225);
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 7PX;
+		}
+
+		.custom {
+			margin-top: 80px;
+		}
+
+		.card-header {
+			border-color: whitesmoke;
+			background: white;
+			background: transparent;
+			backdrop-filter: blur(2px);
+		}
+
+		
+
+
+		.card-body {
+			border-color: whitesmoke;
+			background: white;
+			background: transparent;
+			backdrop-filter: blur(2px);
+		}
+	</style>
+
+</head>
+
+<body>
+	
+	<div class="header">
+		<img src="images/SaiSpruthi.jpg" style="border-radius: 10px;" width=20% height=50>
+		<nav class="navigation">
+			<a href="#">Home</a>
+			<a href="#">About</a>
+			<a href="#">Services</a>
+			<a href="#">Contact</a>
+			<button class="btnlogin-user" onclick="window.location.href='studentLogin'">Login</button>
+			<button class="btnlogin-admin" onclick="window.location.href='adminLogin'">Admin Login</button>
+		</nav>
+	</div>
+	<div class="custom">
+		<div class="container mt-2 middle card ">
+			<h1 class="typing-text" style="font-family: 'Dancing Script', cursive; color:white;"></h1>
+		</div>
+	</div>
+	<div class="container mt-3 card ">
+		<div class="row">
+			<div class="col-md-6 ">
+				<div class="card filter card-custom">
+					<div class="card-header">
+						<h4>
+							Admin Roles and Responsibilities</h4>
+					</div>
+					<div class="card-body">
+						As an administrator of the Student Project Management Portal, you hold a pivotal role in
+						ensuring
+						the seamless management of student projects within our college. Your responsibilities encompass
+						a
+						wide range of tasks aimed at maintaining accurate and up-to-date project details, fostering
+						collaboration, and facilitating effective communication between students, faculty, and project
+						participants. Here's an overview of your key roles:
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Project Details Management</h5>
+							</div>
+							<div class="class-body mt-2">You have the authority to access, edit, and manage the entire
+								repository of student project details. This includes projects, students' information,
+								faculty details, and participant data.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Project Editing and Updating:</h5>
+							</div>
+							<div class="class-body mt-2">You can make necessary edits, updates, and modifications to
+								project
+								information, ensuring that the details accurately reflect the progress and changes in
+								each project's lifecycle.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Adding and Deleting Project Data</h5>
+							</div>
+							<div class="class-body mt-2">You can add new projects to the system, providing comprehensive
+								information such as project title, description, goals, and assigned students. Likewise,
+								you can also delete projects that have been completed or are no longer relevant.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Student Details Management</h5>
+							</div>
+							<div class="class-body mt-2"> You have the ability to add, edit, or update student
+								information.
+								This ensures that the student profiles are current and reflect any changes in contact
+								information or academic status.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Faculty Information Updates</h5>
+							</div>
+							<div class="class-body mt-2"> You can manage faculty details, making sure that the faculty
+								members associated with different projects are accurately listed, facilitating smooth
+								communication between students and mentors.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Participant Details Management</h5>
+							</div>
+							<div class="class-body mt-2">For collaborative projects, you have the role of overseeing and
+								updating the list of project participants. This ensures that the right individuals are
+								connected and can contribute effectively.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card filter card-custom">
+					<div class="card-header">
+						<h4>
+							Student Registration and Login</h4>
+					</div>
+					<div class="card-body">
+						For students, the process is designed to be user-friendly and efficient. Here's how it works
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Registration</h5>
+							</div>
+							<div class="class-body mt-2">Students can easily register for the portal by providing their
+								essential details such as name, email, contact information, and other relevant data.
+								This step helps establish their unique identity within the system.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Login</h5>
+							</div>
+							<div class="class-body mt-2">Once registered, students can log in securely using their
+								credentials. This grants them access to their personalized dashboard, tailored to
+								display their individual details and the projects they're associated with.</div>
+						</div>
+						<hr>
+						<div class="card filter">
+							<div class="card-header">
+								<h5>Dashboard Overview</h5>
+							</div>
+							<div class="class-body mt-2"> Upon logging in, students are greeted with an informative
+								dashboard that provides a snapshot of their personal information, including their name,
+								contact details, and academic information. Additionally, the dashboard prominently
+								displays the projects they are currently involved in.</div>
+						</div>
+
+					</div>
+				</div>
+				<hr>
+				<div class="card filter card-hearder" style="font-style: italic; font-weight: 500; font-size: 20px;">
+
+					Our Student Project Management Portal strives to create a harmonious environment where
+					administrators play a crucial role in fostering collaboration, monitoring progress, and
+					supporting students' academic journeys. Simultaneously, students enjoy a seamless experience
+					that empowers them to focus on their projects while staying informed about their project
+					assignments and personal information.
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		// Initialize Typed.js
+		var options = {
+			strings: ["Welcome to the Student Project Management Portal"],
+			typeSpeed: 40, // typing speed in milliseconds
+			backSpeed: 25,
+			showCursor: false, // hide the cursor
+			loop: false, // loop the animation
+		};
+
+		var typed = new Typed(".typing-text", options);
+	</script>
+</body>
+
+</html>
