@@ -18,19 +18,22 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+
 </head>
 
 <body>
-	<jsp:include page="ssit-logo.jsp"></jsp:include>
+
 	<header>
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
+			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Student Management </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
 	<br>
-	<div class="container col-md-5">
+	<div class="container container1 col-md-5 ">
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${Student != null}">
@@ -55,7 +58,7 @@ if (session == null || session.getAttribute("username") == null) {
 					<input type="hidden" name="StudentID"
 						value="<c:out value='${Student.studentID}' />" />
 				</c:if>
-				
+
 				<c:if test="${Student== null}">
 					<fieldset class="form-group">
 						<label>HallTicket Number </label> <input type="text"
@@ -70,15 +73,14 @@ if (session == null || session.getAttribute("username") == null) {
 						name="Password" required="required">
 				</fieldset>
 				<fieldset class="form-group">
-					<label>First Name</label> <input type="text"
-						id="FirstName"
+					<label>First Name</label> <input type="text" id="FirstName"
 						value="<c:out value='${Student.firstName}' />"
 						class="form-control" name="FirstName" required="required">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Last Name</label> <input type="text"
 						value="<c:out value='${Student.lastName}' />" class="form-control"
-						name="LastName" id="LastName"required="required">
+						name="LastName" id="LastName" required="required">
 				</fieldset>
 
 				<fieldset class="form-group">
@@ -95,7 +97,7 @@ if (session == null || session.getAttribute("username") == null) {
 				<fieldset class="form-group">
 					<label>Department</label> <input type="text"
 						value="<c:out value='${Student.department}' />"
-						class="form-control" name="Department" id="Department"required>
+						class="form-control" name="Department" id="Department" required>
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Batch</label> <input type="text"
@@ -116,7 +118,8 @@ if (session == null || session.getAttribute("username") == null) {
 				<fieldset class="form-group">
 					<label>Contact Number</label> <input type="text"
 						value="<c:out value='${Student.contactNumber}' />"
-						class="form-control" name="ContactNumber" id="ContactNumber" required>
+						class="form-control" name="ContactNumber" id="ContactNumber"
+						required>
 				</fieldset>
 				<p id="numberErrorMsg" style="color: orange"></p>
 				<button type="submit" id="submitBtn" class="btn btn-success">Save</button>

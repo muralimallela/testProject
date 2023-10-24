@@ -19,57 +19,8 @@ if (session == null || session.getAttribute("username") == null) {
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
-<style>
-body{
-
-}
-
-header {
-	position: fixed;
-	background-color: #162938;
-	color: #fff;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-}
-
-header nav {
-	height: 53px;
-}
-
-.table {
-	font-size: 15px;
-	width: 100%;
-}
-
-td {
-	padding: 20px;
-}
-
-th {
-	text-align: center;
-}
-
-.container1 {
-	margin-top: 50px;
-}
-
-.image {
-	width: 18px;
-	height: 18px;
-}
-
-@page {
-	size: auto;
-}
-
-@media print {
-	.no-print, label, .dataTables_info, .dataTables_paginate {
-		display: none;
-	}
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+<link rel="stylesheet" href="css/student-list.css">
 </head>
 <body>
 	<header>
@@ -94,6 +45,40 @@ th {
 					</div>
 				</div>
 			</div>
+			<!-- Filter Start -->
+			<div class="container d-print-none"
+				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
+				<form id="myForm" action="projectReports" method="post">
+					<div class="form-row">
+						<c:set var="projectType" value="${requestScope.projectType}" />
+						<input name="projectType" id="projectType" value="${projectType }"
+							hidden>
+						<div class="col-md-3">
+							<label for="branch">Branch </label> <select
+								class="form-control" id="branch" name="branch">
+								<option value="" hidden>Select branch code</option>
+								<option value="CS">CSE</option>
+								<option value="EE">EEE</option>
+								<option value="ME">MECH</option>
+								<option value="CM">CSM</option>
+								<option value="EC">ECE</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label for="academicYear">Academic Year </label> <select
+								class="form-control" id="academic-year-select" name="academicYear">
+								<option value="" hidden>Select academic year</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label>&nbsp</label><br>
+							<button type="submit" class="btn btn-primary"
+								onclick="checkInputs()">Filter</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Filter End -->
 			<br>
 			
 			<table class="table table-bordered table-striped" id="dataTable">
@@ -101,7 +86,7 @@ th {
 					<tr>
 						<th>StudentID</th>
 						<th class="no-print">Password</th>
-						<th style="width: 350px">Name</th>
+						<th style="width: 200px">Name</th>
 						<th>Email</th>
 						<th class="no-print">Branch</th>
 						<th class="no-print">Year</th>
@@ -125,7 +110,7 @@ th {
 										NULL
 									</c:otherwise>
 								</c:choose></td>
-							<td><c:out value="${Student.firstName}" /> <c:out
+							<td style="width:280px"><c:out value="${Student.firstName}" /> <c:out
 									value="${Student.lastName}" /></td>
 							<td><c:out value="${Student.email}" /></td>
 							<td class="no-print"><c:out value="${Student.department}" /></td>
@@ -135,10 +120,10 @@ th {
 							<td><c:out value="${Student.contactNumber}" /></td>
 							<td class="no-print"><a
 								href="editStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/edit.png" title="Edit"></a>&nbsp;
+									class="image" alt="" src="images/edit.png" title="Edit" width=18></a>&nbsp;
 								<a
 								href="deleteStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/trash.png" title="Delete"></a></td>
+									class="image" alt="" src="images/trash.png" title="Delete" width=18></a></td>
 						</tr>
 					</c:forEach>
 
@@ -158,16 +143,7 @@ th {
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#dataTable").DataTable({
-				'aoColumnDefs' : [ {
-					'bSortable' : false,
-					'aTargets' : [ -1 ]
-				/* 1st one, start by the right */
-				} ]
-			});
-		})
-	</script>
+	<script src="js/dataTables.js"></script>
+	<script type="text/javascript" src="js/academicYearGenerator.js"></script>
 </body>
 </html>

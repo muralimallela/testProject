@@ -19,9 +19,12 @@ if (session == null || session.getAttribute("username") == null) {
 <title>Search</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+<link rel="stylesheet" href="css/search.css">
+
 </head>
 <body>
-	<jsp:include page="ssit-logo.jsp"></jsp:include>
+
 	<!-- Navigation Start -->
 	<%
 	String studentID = (String) request.getAttribute("studentID");
@@ -31,6 +34,7 @@ if (session == null || session.getAttribute("username") == null) {
 	<header>
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
+			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Search </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
@@ -38,8 +42,8 @@ if (session == null || session.getAttribute("username") == null) {
 	<!-- Navigation End -->
 
 	<!-- Search Start -->
-	<div class="container"
-		style="background-color: aliceblue; padding: 20px; margin-top: 20px">
+	<div class="container container-edit"
+		style="background-color: aliceblue; padding: 20px; ">
 		<form id="myForm" action="" method="post">
 			<div class="form-row">
 				<div class="col-md-4">
@@ -80,7 +84,7 @@ if (session == null || session.getAttribute("username") == null) {
 	<!-- Search End -->
 
 	<hr>
-	<div class="container">
+	<div class="container ">
 
 		<p id="result"></p>
 		<!-- STUDENT SEARCH TABLE BEGIN -->

@@ -19,51 +19,7 @@ if (session == null || session.getAttribute("username") == null) {
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
-<style type="text/css">
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-@page {
-	size: auto;
-}
-
-.no-display {
-	display: none;
-}
-
-header {
-	position: fixed;
-	background-color: #162938;
-	color: #fff;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-}
-
-header nav {
-	height: 53px;
-}
-
-.container-edit {
-	margin-top: 50px;
-}
-
-@media print {
-	.no-print, .dataTables_info, .dataTables_paginate, label {
-		display: none;
-	}
-	.no-display {
-		display: block;
-	}
-	.container-edit {
-		margin-top: 0px;
-	}
-}
-</style>
+<link rel="stylesheet" href="css/overall.css">
 </head>
 <body>
 	<header>
@@ -76,16 +32,16 @@ header nav {
 	</header>
 	<br>
 	<div class="row">
-		<img class="no-display " src="images/SaiSpruthi.jpg"
+		<img class="d-none d-print-block" src="images/SaiSpruthi.jpg"
 			style="border-radius: 10px;" width=100% height=130>
-		<hr class="no-display">
-		<div class="no-display container">
+		<hr class="d-none">
+		<div class="d-none d-print-block container">
 
-			<h4 class="text-center">DEPARTMENT OF COMPUTER SCIENCE AND
+			<h4 class="text-center d-print-block">DEPARTMENT OF COMPUTER SCIENCE AND
 				ENGINEERING</h4>
-			<h3 class="text-center">Project Report</h3>
+			<h3 class="text-center d-none d-print-block">Project Report</h3>
 		</div>
-		<div class="container container-edit">
+		<div class="container container1">
 			<h3 class="text-center no-print">List of Projects</h3>
 			<hr class="no-print">
 			<div class="container text-left no-print">
@@ -150,16 +106,6 @@ header nav {
 	<!-- page-search -->
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#dataTable").DataTable({
-				'aoColumnDefs' : [ {
-					'bSortable' : false,
-					'aTargets' : [ -1 ]
-				/* 1st one, start by the right */
-				} ]
-			});
-		})
-	</script>
+	<script src="js/dataTables.js"></script>
 </body>
 </html>

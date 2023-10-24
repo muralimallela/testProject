@@ -1,0 +1,21 @@
+.table {
+    font-size: 15px;
+    width: 100%;
+}
+
+td {
+    padding: 20px;
+}
+
+th {
+    text-align: center;
+}
+
+.container1 {
+    margin-top: 50px;
+}
+
+td .image {
+    width: 18px;
+    height: 18px;
+}

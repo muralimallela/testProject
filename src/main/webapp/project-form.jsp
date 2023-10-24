@@ -18,40 +18,8 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<style>
-body {
-	width: 100%;
-}
+<link rel="stylesheet" type="text/css" href="css/overall.css">
 
-.no-scrollbar {
-	overflow: hidden;
-	resize: none;
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.clear-input {
-	cursor: pointer;
-}
-
-header {
-	position: fixed;
-	background-color: #162938;
-	color: #fff;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-}
-
-header nav {
-	height: 53px;
-}
-
-.container-edit {
-	margin-top: 50px;
-}
-</style>
 </head>
 
 <body>
@@ -64,7 +32,7 @@ header nav {
 		</nav>
 	</header>
 	<br>
-	<div class="container col-md-5 container-edit">
+	<div class="container col-md-5 container1">
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${Project != null}">
@@ -134,19 +102,19 @@ header nav {
 					</select>
 				</c:if>
 				<fieldset class="form-group">
-					<label for="branch">Department Code</label> <select
+					<label for="branch">Department</label> <select
 						class="form-control" name="branch">
-						<option value="" hidden>Select Department Code</option>
+						<option value="" hidden>Select Department</option>
 						<option value="CS"
-							<c:if test="${Project.branch == 'CS'}">selected</c:if>>CS</option>
+							<c:if test="${Project.branch == 'CS'}">selected</c:if>>CSE</option>
 						<option value="EE"
-							<c:if test="${Project.branch == 'EE'}">selected</c:if>>EE</option>
+							<c:if test="${Project.branch == 'EE'}">selected</c:if>>EEE</option>
 						<option value="ME"
-							<c:if test="${Project.branch == 'ME'}">selected</c:if>>ME</option>
+							<c:if test="${Project.branch == 'ME'}">selected</c:if>>MECH</option>
 						<option value="CM"
-							<c:if test="${Project.branch == 'CM'}">selected</c:if>>CM</option>
+							<c:if test="${Project.branch == 'CM'}">selected</c:if>>CSM</option>
 						<option value="EC"
-							<c:if test="${Project.branch == 'EC'}">selected</c:if>>EC</option>
+							<c:if test="${Project.branch == 'EC'}">selected</c:if>>ECE</option>
 					</select>
 				</fieldset>
 				<fieldset class="form-group">
@@ -171,54 +139,6 @@ header nav {
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script>
-		var textarea = document.getElementById("projectTitleInput");
-
-		textarea.addEventListener("input", function() {
-			var input = this.value;
-			var capitalized = input.replace(/\b\w/g, function(match) {
-				return match.toUpperCase();
-			});
-
-			this.value = capitalized;
-
-			this.style.height = "auto";
-			this.style.height = (this.scrollHeight) + "px";
-		});
-		textarea.dispatchEvent(new Event("input"));
-
-		// Academic Year
-
-		var academicYearInput = document.getElementById("academicYearInput");
-
-		academicYearInput.addEventListener("input", function() {
-			var input = this.value;
-			var formattedYear = formatAcademicYear(input);
-
-			// Check if the formatted year is different from the input and not just "-"
-			if (formattedYear !== input && input !== "-") {
-				this.value = formattedYear;
-			}
-		});
-
-		clearInput.addEventListener("click", function() {
-			academicYearInput.value = "";
-		});
-
-		function formatAcademicYear(input) {
-			if (input.match(/^\d{4}$/)) {
-				var lastTwoDigits = input.slice(-2);
-				var nextYearLastTwoDigits = (parseInt(lastTwoDigits) + 1) % 100;
-				nextYearLastTwoDigits = nextYearLastTwoDigits.toString()
-						.padStart(2, '0');
-
-				return input + "-" + nextYearLastTwoDigits;
-			} else {
-				return input;
-			}
-		}
-		// Trigger the input event initially to format the academic year
-		academicYearInput.dispatchEvent(new Event("input"));
-	</script>
+	<script src="js/project-form.js"></script>
 </body>
 </html>

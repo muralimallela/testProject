@@ -100,24 +100,11 @@ public class ParticipantServlet extends HttpServlet {
 	private void insertParticipant(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-//		int participantID = Integer.parseInt(request.getParameter("participantID")) ;
 		String projectID = request.getParameter("projectID");
-		String studentIDs[] = request.getParameterValues("studentID[]");
+		String batch = request.getParameter("batch");
 
-		if (studentIDs != null ) {
-			for (int i = 0; i < studentIDs.length; i++) {
-				String studentID = studentIDs[i];
-				if (studentID != null && !studentID.isEmpty()) {
-					System.out.println("Student ID: " + studentID );
-					Participants newParticipant = new Participants(projectID, studentID);
-					System.out.println(newParticipant);
-					participantsDAO.insertParticipant(newParticipant);
-				}
-			}
-		}
-
-//		Participants newParticipant = new Participants( projectTitle, studentID,batch, role);
-//		participantsDAO.insertProject(newParticipant);
+		Participants newParticipant = new Participants(projectID, batch);
+		participantsDAO.insertParticipant(newParticipant);
 		response.sendRedirect("listParticipants");
 	}
 
@@ -125,8 +112,8 @@ public class ParticipantServlet extends HttpServlet {
 			throws SQLException, IOException {
 		String projectID = request.getParameter("projectID");
 		int participantID = Integer.parseInt(request.getParameter("participantID"));
-		String studentID = request.getParameter("studentID");
-		Participants book = new Participants(participantID, projectID, studentID);
+		String batch = request.getParameter("batch");
+		Participants book = new Participants(participantID, projectID, batch);
 		participantsDAO.updateParticipant(book);
 		response.sendRedirect("listParticipants");
 	}

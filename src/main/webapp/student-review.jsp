@@ -17,29 +17,21 @@ if (session == null || session.getAttribute("username") == null) {
 <title>Student || Review</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style id="aby-style">
-.custom-card-review {
-	max-height: 93vh;
-	overflow-y: auto;
-}
-
-.custom-card-project {
-	max-height: 65vh;
-	overflow-y: auto;
-}
-</style>
+<link rel="stylesheet" href="css/student-review.css">
+<link rel="stylesheet" href="css/overall.css">
 </head>
 <body>
-	<jsp:include page="ssit-logo.jsp"></jsp:include>
+	
 	<header>
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
+			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Student Review </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
 	<br>
-	<div class="container vertical-center">
+	<div class="container container1 vertical-center">
 		<div class="row">
 			<div class="col-md-4 mx-auto">
 				<form class="d-flex justify-content-center"

@@ -14,14 +14,11 @@ if (session == null || session.getAttribute("username") == null) {
 <head>
 <meta charset="UTF-8">
 <title>Admin</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="bootstrap\js\bootstrap.min.js" type="text/javascript"></script>
-<style>
-header nav {
-	height: 53px;
-}
-</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+
 </head>
 <body>
 	<header>
@@ -34,7 +31,7 @@ header nav {
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
-	<div class="container" style="margin-top: 50px">
+	<div class="container container-edit">
 		<div class="row r">
 			<div class="col-2">
 				<a href="search" style="text-decoration: none">
@@ -78,6 +75,7 @@ header nav {
 			</div>
 		</div>
 	</div>
+	<script src="bootstrap\js\bootstrap.min.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

@@ -1,0 +1,12 @@
+.no-scrollbar {
+    overflow: hidden;
+    resize: none;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+}
+
+.clear-input {
+    cursor: pointer;
+}

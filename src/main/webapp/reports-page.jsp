@@ -17,41 +17,16 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/overall.css">
 <style>
-.table-bordered {
-	text-align: center;
-	padding: 10px;
-}
 
-.left-align {
-	text-align: left;
-	padding-left: 5px;
-	border: 1px solid black;
-}
-
-@page {
-	size: landscape;
-	margin: none; /* Adjust margins as needed */
-}
-
-/* Example: Hide elements when printing */
-@media print {
-	.container .table-bordered {
-		color: red;
-		font-size: 12px;
-	}
-	.no-print {
-		display: none;
-	}
-}
 </style>
 
 </head>
 <body>
 
 	<header>
-		<nav class="navbar navbar-expand-md  navbar-dark"
-			style="background-color: #123455">
+		<nav class="navbar navbar-expand-md  navbar-dark">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Reports </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
@@ -62,25 +37,28 @@ if (session == null || session.getAttribute("username") == null) {
 	<div class="row">
 
 		<div class="container">
-			<!-- Search Start -->
-			<div class="container"
+			<!-- Filter Start -->
+			<div class="container d-print-none"
 				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
-				<form id="myForm" action="" method="post">
+				<form id="myForm" action="projectReports" method="post">
 					<div class="form-row">
+						<c:set var="projectType" value="${requestScope.projectType}" />
+						<input name="projectType" id="projectType" value="${projectType }"
+							hidden>
 						<div class="col-md-3">
-							<label for="branch">Branch Code:</label> <select
+							<label for="branch">Branch </label> <select
 								class="form-control" id="branch" name="branch">
 								<option value="" hidden>Select branch code</option>
-								<option value="CS">CS</option>
-								<option value="EE">EE</option>
-								<option value="ME">ME</option>
-								<option value="CM">CM</option>
-								<option value="EC">EC</option>
+								<option value="CS">CSE</option>
+								<option value="EE">EEE</option>
+								<option value="ME">MECH</option>
+								<option value="CM">CSM</option>
+								<option value="EC">ECE</option>
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="acYear">Academic Year:</label> <select
-								class="form-control" id="academic-year-select">
+							<label for="academicYear">Academic Year </label> <select
+								class="form-control" id="academic-year-select" name="academicYear">
 								<option value="" hidden>Select academic year</option>
 							</select>
 						</div>
@@ -89,17 +67,10 @@ if (session == null || session.getAttribute("username") == null) {
 							<button type="submit" class="btn btn-primary"
 								onclick="checkInputs()">Filter</button>
 						</div>
-
-
 					</div>
-
-
 				</form>
-
-
 			</div>
-
-			<!-- Search End -->
+			<!-- Filter End -->
 			<hr>
 
 			<table class="table-bordered" id="dataTable">
@@ -107,7 +78,7 @@ if (session == null || session.getAttribute("username") == null) {
 					<tr>
 						<th>Batch No.</th>
 						<th>Student ID</th>
-						<th style="width: 280px">Student Name</th>
+						<th style="width: 250px">Student Name</th>
 						<th>Project Name</th>
 						<th>Faculty Guide</th>
 					</tr>
@@ -134,32 +105,8 @@ if (session == null || session.getAttribute("username") == null) {
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script>
-        // Function to generate academic years dynamically
-        function generateAcademicYears(startYear, endYear) {
-            const academicYears = [];
-            for (let year = endYear; year >= startYear; year--) {
-                const academicYear = `${year}-${(year + 1).toString().slice(-2)}`;
-                academicYears.push(academicYear);
-            }
-            return academicYears;
-        }
-
-        // Define the start and end years
-        const startYear = 2000;
-        const endYear = new Date().getFullYear();
-
-        // Generate academic years
-        const academicYears = generateAcademicYears(startYear, endYear);
-
-        // Populate the select element with option tags
-        const academicYearSelect = document.getElementById('academic-year-select');
-        academicYears.forEach(year => {
-            const option = document.createElement('option');
-            option.value = year;
-            option.text = year;
-            academicYearSelect.appendChild(option);
-        });
-    </script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="js/reports-page.js"></script>
+	<script src="js/academicYearGenerator.js"></script>
 </body>
 </html>

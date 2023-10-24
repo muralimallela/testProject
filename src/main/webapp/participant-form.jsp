@@ -16,30 +16,14 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-</head>
-<style>
-header {
-	position: fixed;
-	background-color: #162938;
-	color: #fff;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-}
-
-header nav {
-	height: 53px;
-}
-
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+<style type="text/css">
 .container-edit {
 	margin-top: 50px;
 }
-
-#searchFaculty+.dropdown-menu {
-	max-width: 200px; 
-}
 </style>
+</head>
+
 <body>
 
 	<header>
@@ -51,7 +35,7 @@ header nav {
 		</nav>
 	</header>
 	<br>
-	<div class="container col-md-5 container-edit">
+	<div class="container col-md-5 container1">
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${Participants != null}">
@@ -93,7 +77,8 @@ header nav {
 
 						<c:forEach var="Project" items="${listProject}">
 							<c:if test="${Project.projectID ==Participants.projectID }">
-								<option value="${Project.projectID}" selected hidden>${Project.projectID} - ${Project.projectTitle}</option>
+								<option value="${Project.projectID}" selected hidden>${Project.projectID}
+									- ${Project.projectTitle}</option>
 							</c:if>
 							<option value="<c:out value="${Project.projectID}"/>"><c:out
 									value="${Project.projectID} - ${Project.projectTitle}" />
@@ -114,9 +99,9 @@ header nav {
 				</c:if>
 				<c:if test="${Participants != null}">
 					<fieldset class="form-group">
-						<label>Batch</label> <input type="text"
+						<label>Batch</label> <input type="text"  name="batch"
 							value="<c:out value='${Participants.batch}' />"
-							class="form-control" name="Batch" required="required">
+							class="form-control" required="required">
 					</fieldset>
 				</c:if>
 				<button type="submit" class="btn btn-success">Save</button>
@@ -130,28 +115,6 @@ header nav {
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	<script>
-    $(document).ready(function () {
-        $("#addStudent").click(function () {
-            $("#studentInputs").append(`
-                <div class="row mb-2">
-                    <div class="col">
-                        <input type="text" class="form-control" name="studentID[]" placeholder="Student ID" required>
-                    </div>
-                </div>
-            `);
-
-            $("#studentInputs .row:last-child").append(`
-              <div class="col">
-                <button type="button" class="btn btn-danger removeStudent small">Remove</button>
-              </div>
-            `);
-
-            $(".removeStudent").click(function () {
-                $(this).closest(".row").remove();
-            });
-        });
-    });
-</script>
+	<script src="js/participant-form.js"></script>
 </body>
 </html>

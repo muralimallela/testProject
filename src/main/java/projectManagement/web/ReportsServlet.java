@@ -14,30 +14,37 @@ import javax.servlet.http.HttpServletResponse;
 import projectManagement.dao.ReportsDAO;
 import projectManagement.model.Reports;
 
-@WebServlet({"/ReportsServlet","/reports","/allReports"})
+@WebServlet({ "/ReportsServlet", "/reports", "/allReports", "/majorProjects", "/miniProjects","/projectReports"})
 public class ReportsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private ReportsDAO  reportsDAO;
+
+	private ReportsDAO reportsDAO;
+
 	public void init() {
 		new Reports();
 		reportsDAO = new ReportsDAO();
 	}
-       
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String action = request.getServletPath();
 		switch (action) {
 
-		case "/allReports":
-			allReports(request, response);
-			break;
+//		case "/allReports":
+//			allReports(request, response);
+//			break;
 		case "/reports":
-			reportsPage(request,response);
+			reportsPage(request, response);
 			break;
+		case "/projectReports":
+			peojectReports(request, response);
+			break;
+
 //			case "/insertProject":
 //				insertProject(request, response);
 //				break;
@@ -54,20 +61,35 @@ public class ReportsServlet extends HttpServlet {
 //				listProject(request, response);
 //				break;
 		}
-		
+
 	}
 
-	private void reportsPage(HttpServletRequest request, HttpServletResponse response) throws IOException {	
+	private void reportsPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.sendRedirect("reports-page.jsp");
 	}
 
-	private void allReports(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Reports> allReports = reportsDAO.selectAllRports();
+	private void peojectReports(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String projectType = request.getParameter("projectType");
+		String branch = request.getParameter("branch");
+		String academicYear = request.getParameter("academicYear");
+		List<Reports> allReports = reportsDAO.projectReports(projectType,branch,academicYear);
 		request.setAttribute("allReports", allReports);
-		
+		request.setAttribute("projectType", projectType);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("reports-page.jsp");
 		dispatcher.forward(request, response);
-		
+
 	}
+
+//	private void majorProjects(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		String branch = request.getParameter("branch");
+//		String academicYear = request.getParameter("academicYear");
+//		List<Reports> allReports = reportsDAO.selectMajorProjectRports(branch,academicYear);
+//		request.setAttribute("allReports", allReports);
+//
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("reports-page.jsp");
+//		dispatcher.forward(request, response);
+//
+//	}
 }

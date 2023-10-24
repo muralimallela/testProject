@@ -16,36 +16,17 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<style type="text/css">
-*{
-	margin : 0;
-	padding : 0;
-	box-sizing : border-box;
-}
-header {
-	position: fixed;
-	background-color: #162938;
-	color: #fff;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-}
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="css/overall.css">
 
-header nav {
-	height: 53px;
-}
-
-.container-edit {
-	margin-top: 50px;
-}
-</style>
 </head>
 <body>
-	<jsp:include page="ssit-logo.jsp"></jsp:include>
+	
 	<header>
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123456">
+			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Participants Management </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
@@ -53,19 +34,19 @@ header nav {
 	<br>
 	<div class="row">
 
-		<div class="container">
-			<h3 class="text-center">List of Participants</h3>
+		<div class="container container1">
+			<h3 class="text-center d-print-none">List of Participants</h3>
 			<hr>
 			<div class="container text-left">
 				<div class="row">
 					<div class="col-md-6">
 						<a href="<%=request.getContextPath()%>/newParticipant"
-							class="btn btn-success disable-on-print">Assign Project </a>
+							class="btn btn-success d-print-none">Assign Project </a>
 					</div>
-					<!-- search input -->
+					<!-- search input 
 					<div class="col-md-6 text-right">
 						<input type="text" id="searchInput" placeholder="Search...">
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<br>
@@ -76,7 +57,7 @@ header nav {
 						<th>Project Title</th>
 						<th>Branch</th>
 						<th>AcademicYear</th>
-						<th>Actions</th>
+						<th class="d-print-none">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -98,7 +79,7 @@ header nav {
 										<c:out value="${Project.academicYear}" />
 									</c:if>
 								</c:forEach></td>
-							<td><a
+							<td class="d-print-none"><a
 								href="editParticipant?participantID=<c:out value='${Participants.participantID}' />"><img
 									class="image" alt="Edit icon" src="images/edit.png"
 									title="Edit" height="18"></a> &nbsp; <a
@@ -117,5 +98,8 @@ header nav {
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+	<script type="text/javascript" src="js/dataTables.js"></script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+.custom-card-review {
+    max-height: 93vh;
+    overflow-y: auto;
+}
+
+.custom-card-project {
+    max-height: 65vh;
+    overflow-y: auto;
+}

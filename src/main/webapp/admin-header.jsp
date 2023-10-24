@@ -9,7 +9,7 @@
 		<li class="nav-item"><a
 			href="<%=request.getContextPath()%>/admin" class="nav-link">Home</a></li>
 		<li class="nav-item"><a
-			href="<%=request.getContextPath()%>/search" class="nav-link">Search</a></li>
+			href="<%=request.getContextPath()%>/search" class="nav-link" hidden>Search</a></li>
 		<li class="nav-item"></li>
 
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
@@ -28,8 +28,25 @@
 					href="<%=request.getContextPath()%>/listProject">Projects</a>
 			</div></li>
 		<!-- REPORTS -->
-		
-		<li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false"> Reports </a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkRight">
+				<li><a class="dropdown-item" href="#">&laquo; Project Reports </a>
+					<ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
+						<li><a class="dropdown-item" href="<%=request.getContextPath()%>/projectReports?projectType=MiniProject">Mini Project</a></li>
+						<li><a class="dropdown-item" href="<%=request.getContextPath()%>/projectReports?projectType=MajorProject">Major Project</a></li>
+					</ul>
+				</li>
+				<li><a class="dropdown-item" href="#">&laquo; Review Reports </a>
+					<ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
+						<li><a class="dropdown-item" href="#">Mini Project</a></li>
+						<li><a class="dropdown-item" href="#">Major Project</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<!-- Reports END -->
 		<li class="nav-item"><a class="nav-link" href="Logout">Logout</a></li>
 	</ul>
 </div>

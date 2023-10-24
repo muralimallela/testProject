@@ -17,19 +17,21 @@ if (session == null || session.getAttribute("username") == null) {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/overall.css">
+
 </head>
 <body>
-	<jsp:include page="ssit-logo.jsp"></jsp:include>
+
 	<header>
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
-			<a href="#" class="navbar-brand"> Faculty Management
-			</a>
+			<jsp:include page="ssit-logo.jsp"></jsp:include>
+			<a href="#" class="navbar-brand"> Faculty Management </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
 	<br>
-	<div class="container col-md-5">
+	<div class="container container1 col-md-5">
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${Faculty != null}">
@@ -59,7 +61,7 @@ if (session == null || session.getAttribute("username") == null) {
 					<fieldset class="form-group">
 						<label>Faculty ID</label> <input type="text" name="facultyID"
 							id="facultyID" value="<c:out value='${Faculty.facultyID}' />"
-							class="form-control"  required="required">
+							class="form-control" required="required">
 					</fieldset>
 				</c:if>
 				<fieldset class="form-group">
@@ -100,7 +102,7 @@ if (session == null || session.getAttribute("username") == null) {
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		
+
 	<!-- FACULTY ID VALIDATION 
 	<script type="text/javascript">
 		const facultyID = document.getElementById("facultyID");
