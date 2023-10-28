@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 // Check if the user has an active session
 response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
@@ -48,39 +49,36 @@ if (session == null || session.getAttribute("username") == null) {
 			<!-- Filter Start -->
 			<div class="container d-print-none"
 				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
-				<form id="myForm" action="projectReports" method="post">
+				<form id="myForm" action="studentList" method="post">
 					<div class="form-row">
-						<c:set var="projectType" value="${requestScope.projectType}" />
-						<input name="projectType" id="projectType" value="${projectType }"
-							hidden>
 						<div class="col-md-3">
-							<label for="branch">Branch </label> <select
-								class="form-control" id="branch" name="branch">
+							<label for="branch">Branch </label> <select class="form-control"
+								id="branch" name="branch">
 								<option value="" hidden>Select branch code</option>
-								<option value="CS">CSE</option>
-								<option value="EE">EEE</option>
-								<option value="ME">MECH</option>
-								<option value="CM">CSM</option>
-								<option value="EC">ECE</option>
+								<option value="CSE">CSE</option>
+								<option value="EEE">EEE</option>
+								<option value="MECH">MECH</option>
+								<option value="CSM">CSM</option>
+								<option value="ECE">ECE</option>
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="academicYear">Academic Year </label> <select
-								class="form-control" id="academic-year-select" name="academicYear">
-								<option value="" hidden>Select academic year</option>
+							<label for="year">Joining Year </label> <select
+								class="form-control" id="yearSelect"
+								name="year">
+								<option value="" hidden>Select joining year</option>
 							</select>
 						</div>
 						<div class="col-md-4">
 							<label>&nbsp</label><br>
-							<button type="submit" class="btn btn-primary"
-								onclick="checkInputs()">Filter</button>
+							<button type="submit" class="btn btn-primary">Filter</button>
 						</div>
 					</div>
 				</form>
 			</div>
 			<!-- Filter End -->
 			<br>
-			
+
 			<table class="table table-bordered table-striped" id="dataTable">
 				<thead>
 					<tr>
@@ -110,20 +108,21 @@ if (session == null || session.getAttribute("username") == null) {
 										NULL
 									</c:otherwise>
 								</c:choose></td>
-							<td style="width:280px"><c:out value="${Student.firstName}" /> <c:out
-									value="${Student.lastName}" /></td>
+							<td style="width: 280px"><c:out value="${Student.firstName}" />
+								<c:out value="${Student.lastName}" /></td>
 							<td><c:out value="${Student.email}" /></td>
 							<td class="no-print"><c:out value="${Student.department}" /></td>
 							<td class="no-print"><c:out value="${Student.year}" /></td>
-							<td><c:out value="${Student.batch}" /></td>
+							<td><c:out value="${Student.batch.substring(4)}" /></td>
 							<td><c:out value="${Student.role}" /></td>
 							<td><c:out value="${Student.contactNumber}" /></td>
 							<td class="no-print"><a
 								href="editStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/edit.png" title="Edit" width=18></a>&nbsp;
-								<a
+									class="image" alt="" src="images/edit.png" title="Edit"
+									width=18></a>&nbsp; <a
 								href="deleteStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/trash.png" title="Delete" width=18></a></td>
+									class="image" alt="" src="images/trash.png" title="Delete"
+									width=18></a></td>
 						</tr>
 					</c:forEach>
 
@@ -144,6 +143,6 @@ if (session == null || session.getAttribute("username") == null) {
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 	<script src="js/dataTables.js"></script>
-	<script type="text/javascript" src="js/academicYearGenerator.js"></script>
+	<script type="text/javascript" src="js/yearGenerator.js"></script>
 </body>
 </html>

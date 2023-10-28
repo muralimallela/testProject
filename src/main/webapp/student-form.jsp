@@ -101,8 +101,8 @@ if (session == null || session.getAttribute("username") == null) {
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Batch</label> <input type="text"
-						value="<c:out value='${Student.batch}' />" class="form-control"
-						name="Batch" id="Batch" required>
+						value="<c:out value="${Student.batch.substring(4)}" />"
+						class="form-control" name="Batch" id="Batch" required>
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Role</label> <select class="form-control" name="Role"

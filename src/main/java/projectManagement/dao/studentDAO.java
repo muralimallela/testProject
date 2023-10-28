@@ -15,6 +15,7 @@ public class studentDAO {
 			+ "(StudentID,Password,FirstName, LastName, Email,Department, Year,batch,role, ContactNumber) VALUES " + " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String SELECT_STUDENT_BY_ID = "SELECT * FROM students WHERE StudentID = ?";
 	private static final String SELECT_ALL_STUDENTS = "SELECT * FROM students ORDER BY Year DESC";
+	private static final String SELECT_ALL_STUDENTS_BY_BRANCH_YEAR = "SELECT * FROM students WHERE year = ? AND Department = ? ORDER BY Year DESC";
 	private static final String DELETE_STUDENT_SQL = "delete from students where StudentID = ? ";
 	private static final String UPDATE_STUDENT_SQL = "UPDATE students SET Password = ?, FirstName= ?, LastName =?, Email = ?, Department = ?, Year = ?, batch = ?, role = ?, ContactNumber = ? WHERE  StudentID = ?;";
 	private static final String	STUDENT_LOGIN = "SELECT * FROM students WHERE studentID = ? AND password = ?; ";
@@ -73,13 +74,20 @@ public class studentDAO {
 		return student;
 	}
 
-	public List<Student> selectAllStudents() {
-
+	public List<Student> selectAllStudents(String year,String branch) {
+		String query;
 		List<Student> students = new ArrayList<>();
-
+		if(year != null && branch != null)
+			query = SELECT_ALL_STUDENTS_BY_BRANCH_YEAR;
+		else
+			query = SELECT_ALL_STUDENTS;
 		try (Connection connection = sqlconnection.getConnection();
 
-				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_STUDENTS);) {
+				PreparedStatement preparedStatement = connection.prepareStatement(query);) {
+			if(year != null && branch != null) {
+				preparedStatement.setString(1, year);
+				preparedStatement.setString(2, branch);
+			}
 			System.out.println(preparedStatement);
 
 			ResultSet rs = preparedStatement.executeQuery();

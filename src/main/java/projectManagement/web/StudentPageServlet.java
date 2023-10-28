@@ -202,6 +202,7 @@ public class StudentPageServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
+		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);;
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 

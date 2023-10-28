@@ -33,6 +33,7 @@ if (session == null || session.getAttribute("username") == null) {
 	</header>
 	<div class="container container-edit">
 		<div class="row r">
+		<!--  
 			<div class="col-2">
 				<a href="search" style="text-decoration: none">
 					<button class="btn btn-primary btn-block"
@@ -40,9 +41,9 @@ if (session == null || session.getAttribute("username") == null) {
 						<h3>Search</h3>
 					</button>
 				</a>
-			</div>
+			</div> -->
 			<div class="col-2">
-				<a href="listStudent" style="text-decoration: none">
+				<a href="studentList" style="text-decoration: none">
 					<button class="btn btn-primary btn-block"
 						style="height: 150px; width: 180px">
 						<h3>Students</h3>

@@ -14,7 +14,7 @@ public class ReportsDAO {
 
 	SqlConnection sqlconnection = new SqlConnection();
 
-	private static final String ALL_REPORTS = "SELECT * FROM participants_report ORDER BY StudentBatch";
+//	private static final String ALL_REPORTS = "SELECT * FROM participants_report ORDER BY StudentBatch";
 	private static final String MAJOR_PROJECT_REPORTS = "SELECT * FROM major_project_report ORDER BY StudentBatch";
 	private static final String MAJOR_PROJECT_REPORTS_BY_BRANCH = "SELECT * FROM major_project_report  WHERE branch = ? AND academicYear = ? ORDER BY StudentBatch";
 	private static final String MINI_PROJECT_REPORTS = "SELECT * FROM mini_project_report ORDER BY StudentBatch";

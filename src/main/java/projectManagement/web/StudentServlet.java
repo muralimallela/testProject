@@ -15,18 +15,17 @@ import projectManagement.dao.studentDAO;
 import projectManagement.model.Faculty;
 import projectManagement.model.Student;
 
-@WebServlet({"/newFaculty", "/insertFaculty", "/listFaculty", "/updateFaculty", "/editFaculty", "/deleteFaculty",
-		"/newStudent", "/insertStudent", "/deleteStudent", "/editStudent", "/updateStudent", "/listStudent", })
+@WebServlet({ "/newFaculty", "/insertFaculty", "/listFaculty", "/updateFaculty", "/editFaculty", "/deleteFaculty",
+		"/newStudent", "/insertStudent", "/deleteStudent", "/editStudent", "/updateStudent", "/studentList", })
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private studentDAO studentDAO;
 	private FacultyDAO facultyDAO;
-	
 
 	public void init() {
 		studentDAO = new studentDAO();
 		facultyDAO = new FacultyDAO();
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,11 +57,10 @@ public class StudentServlet extends HttpServlet {
 			case "/updateStudent":
 				updateStudent(request, response);
 				break;
-			case "/listStudent":
-				listStudent(request, response);
+			case "/studentList":
+				studentList(request, response);
 				break;
-			
-			
+
 			// Faculty Operations
 
 			case "/newFaculty":
@@ -90,13 +88,13 @@ public class StudentServlet extends HttpServlet {
 		}
 	}
 
-
 	// Student Methods
-	
-	
-	private void listStudent(HttpServletRequest request, HttpServletResponse response)
+
+	private void studentList(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List<Student> listStudent = studentDAO.selectAllStudents();
+		String year = request.getParameter("year");
+		String branch = request.getParameter("branch");
+		List<Student> listStudent = studentDAO.selectAllStudents(year, branch);
 		request.setAttribute("listStudent", listStudent);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("student-list.jsp");
 		dispatcher.forward(request, response);
@@ -129,12 +127,14 @@ public class StudentServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
+		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 
-		Student newStudent = new Student(StudentID,Password, FirstName, LastName, Email, Department, Year,batch,role, ContactNumber);
+		Student newStudent = new Student(StudentID, Password, FirstName, LastName, Email, Department, Year, batch, role,
+				ContactNumber);
 		studentDAO.insertStudent(newStudent);
-		response.sendRedirect("listStudent");
+		response.sendRedirect("studentList");
 	}
 
 	private void updateStudent(HttpServletRequest request, HttpServletResponse response)
@@ -147,23 +147,22 @@ public class StudentServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
+		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
-		Student book = new Student(StudentID,Password, FirstName, LastName, Email, Department, Year,batch,role, ContactNumber);
+		Student book = new Student(StudentID, Password, FirstName, LastName, Email, Department, Year, batch, role,
+				ContactNumber);
 		studentDAO.updateStudent(book);
-		response.sendRedirect("listStudent");
+		response.sendRedirect("studentList");
 	}
 
 	private void deleteStudent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		String StudentID = request.getParameter("StudentID");
 		studentDAO.deleteStudent(StudentID);
-		response.sendRedirect("listStudent");
+		response.sendRedirect("studentListstudentList");
 
 	}
-	
-	
-	
 
 	// Faculty Methods
 

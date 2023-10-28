@@ -19,7 +19,7 @@
 				<a class="dropdown-item"
 					href="<%=request.getContextPath()%>/studentReview" class="nav-link">StudentReview</a>
 				<a class="dropdown-item"
-					href="<%=request.getContextPath()%>/listStudent">Students</a> <a
+					href="<%=request.getContextPath()%>/studentList">Students</a> <a
 					class="dropdown-item"
 					href="<%=request.getContextPath()%>/listFaculty">Faculty</a> <a
 					class="dropdown-item"

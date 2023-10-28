@@ -18,6 +18,7 @@ if (session == null || session.getAttribute("username") == null) {
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
+<link rel="stylesheet" type="text/css" href="css/reports-page.css">
 <style>
 
 </style>
@@ -48,7 +49,7 @@ if (session == null || session.getAttribute("username") == null) {
 						<div class="col-md-3">
 							<label for="branch">Branch </label> <select
 								class="form-control" id="branch" name="branch">
-								<option value="" hidden>Select branch code</option>
+								<option value="" hidden>Select branch</option>
 								<option value="CS">CSE</option>
 								<option value="EE">EEE</option>
 								<option value="ME">MECH</option>
@@ -86,7 +87,7 @@ if (session == null || session.getAttribute("username") == null) {
 				<tbody>
 					<c:forEach var="Reports" items="${allReports}">
 						<tr>
-							<td><c:out value="${Reports.batch}" /></td>
+							<td><c:out value="${Reports.batch.substring(4)}" /></td>
 							<td><c:out value="${Reports.studentID}" /></td>
 							<td class="left-align"><c:out value="${Reports.studentName}" /></td>
 							<td class="left-align"><c:out

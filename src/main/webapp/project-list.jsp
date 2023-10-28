@@ -37,8 +37,8 @@ if (session == null || session.getAttribute("username") == null) {
 		<hr class="d-none">
 		<div class="d-none d-print-block container">
 
-			<h4 class="text-center d-print-block">DEPARTMENT OF COMPUTER SCIENCE AND
-				ENGINEERING</h4>
+			<h4 class="text-center d-print-block">DEPARTMENT OF COMPUTER
+				SCIENCE AND ENGINEERING</h4>
 			<h3 class="text-center d-none d-print-block">Project Report</h3>
 		</div>
 		<div class="container container1">
@@ -56,6 +56,46 @@ if (session == null || session.getAttribute("username") == null) {
 					</div>  -->
 				</div>
 			</div>
+
+			<!-- Filter Start -->
+			<div class="container d-print-none"
+				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
+				<form id="myForm" action="studentList" method="post">
+					<div class="form-row">
+						<div class="col-md-3">
+							<label for="year">Joining Year </label> <select
+								class="form-control" id="yearSelect" name="year">
+								<option value="" hidden>Select joining year</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label for="branch">Branch </label> <select class="form-control"
+								id="branch" name="branch">
+								<option value="" hidden>Select branch code</option>
+								<option value="CSE">CSE</option>
+								<option value="EEE">EEE</option>
+								<option value="MECH">MECH</option>
+								<option value="CSM">CSM</option>
+								<option value="ECE">ECE</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label for="branch">Project Type </label> <select class="form-control"
+								id="branch" name="branch">
+								<option value="" hidden>Select type of project</option>
+								<option value="Mini Project">Mini Project</option>
+								<option value="Major Project Stage-I">Major Project Stage-I</option>
+								<option value="Major Project Stage-II">Major Project Stage-II</option>
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label>&nbsp</label><br>
+							<button type="submit" class="btn btn-primary">Filter</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Filter End -->
 			<br>
 			<table class="table table-bordered" id="dataTable">
 				<thead>
