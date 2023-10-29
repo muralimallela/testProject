@@ -63,15 +63,20 @@ if (session == null || session.getAttribute("username") == null) {
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="year">Joining Year </label> <select
+							<label for="year">Pass Out Year </label> <select
 								class="form-control" id="yearSelect"
 								name="year">
-								<option value="" hidden>Select joining year</option>
+								<option value="" hidden>Select Pass Out year</option>
 							</select>
 						</div>
 						<div class="col-md-4">
 							<label>&nbsp</label><br>
 							<button type="submit" class="btn btn-primary">Filter</button>
+						</div>
+						<div class="col-md-2 d-flex  justify-content-end align-items-end">
+							<label>&nbsp</label><br> <a type="button"
+								class="btn  btn-lg"><img src="images/printer.png" width=30
+								onclick="window.print()" title="Print"></a>
 						</div>
 					</div>
 				</form>

@@ -16,11 +16,13 @@ public class ProjectDAO {
 	}
 
 	private static final String INSERT_PROJECT_SQL = "INSERT INTO projects"
-			+ "(projectID,ProjectTitle, ProjectType, FacultyAdvisorID, Branch, AcademicYear) VALUES " + " (?, ?, ?, ?, ?, ?);";
+			+ "(projectID,ProjectTitle, ProjectType, FacultyAdvisorID, Branch, batch,  AcademicYear) VALUES "
+			+ " (?, ?, ?, ?, ?, ?, ?);";
 	private static final String SELECT_PROJECT_BY_ID = "select * from projects where projectID = ?";
+	private static final String PROJECT_FILTER = "select * from projects where AcademicYear = ? AND Branch = ? AND ProjectType = ?";
 	private static final String SELECT_ALL_POJECTS = "select * from projects";
 	private static final String DELETE_PROJECT_SQL = "delete from projects where projectID = ?;";
-	private static final String UPDATE_PROJECT_SQL = "update projects set ProjectTitle= ?, ProjectType =?, FacultyAdvisorID = ?, Branch = ?, AcademicYear = ? where  projectID = ?;";
+	private static final String UPDATE_PROJECT_SQL = "update projects set ProjectTitle= ?, ProjectType =?, FacultyAdvisorID = ?, Branch = ?, batch = ? AcademicYear = ? where  projectID = ?;";
 
 	SqlConnection sqlconnection = new SqlConnection();
 
@@ -34,7 +36,8 @@ public class ProjectDAO {
 			preparedStatement.setString(3, project.getProjectType());
 			preparedStatement.setString(4, project.getFacultyAdvisorID());
 			preparedStatement.setString(5, project.getBranch());
-			preparedStatement.setString(6, project.getAcademicYear());
+			preparedStatement.setString(6, project.getBatch());
+			preparedStatement.setString(7, project.getAcademicYear());
 
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
@@ -59,14 +62,44 @@ public class ProjectDAO {
 				String projectType = rs.getString("projectType");
 				String facultyAdvisorID = rs.getString("facultyAdvisorID");
 				String branch = rs.getString("branch");
+				String batch = rs.getString("batch");
 				String AcademicYear = rs.getString("AcademicYear");
-				project = new Project(projectID, projectTitle, projectType, facultyAdvisorID,branch,AcademicYear);
+				project = new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch, batch, AcademicYear);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		return project;
 	}
+	
+	public List<Project> filterProjects(String academicYear, String branch, String projectType) {
+		List<Project> project = new ArrayList<>();
+		try (Connection connection = sqlconnection.getConnection();
+
+				PreparedStatement preparedStatement = connection.prepareStatement(PROJECT_FILTER);) {
+			preparedStatement.setString(1, academicYear);
+			preparedStatement.setString(2, branch);
+			preparedStatement.setString(3, projectType);
+			System.out.println(preparedStatement);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				String projectID = rs.getString("projectID");
+				String projectTitle = rs.getString("projectTitle");
+//				String projectType = rs.getString("projectType");
+				String facultyAdvisorID = rs.getString("facultyAdvisorID");
+//				String branch = rs.getString("branch");
+				String batch = rs.getString("batch");
+				String AcademicYear = rs.getString("AcademicYear");
+				project.add(new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch,batch, AcademicYear));
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return project;
+	}
+
 
 	public List<Project> selectAllProjects() {
 
@@ -85,8 +118,9 @@ public class ProjectDAO {
 				String projectType = rs.getString("projectType");
 				String facultyAdvisorID = rs.getString("facultyAdvisorID");
 				String branch = rs.getString("branch");
+				String batch = rs.getString("batch");
 				String AcademicYear = rs.getString("AcademicYear");
-				project.add(new Project(projectID, projectTitle, projectType, facultyAdvisorID,branch,AcademicYear));
+				project.add(new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch, batch, AcademicYear));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -115,12 +149,14 @@ public class ProjectDAO {
 			statement.setString(2, project.getProjectType());
 			statement.setString(3, project.getFacultyAdvisorID());
 			statement.setString(4, project.getBranch());
+			statement.setString(4, project.getBatch());
 			statement.setString(5, project.getAcademicYear());
 			statement.setString(6, project.getProjectID());
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
 	}
+
 
 	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {

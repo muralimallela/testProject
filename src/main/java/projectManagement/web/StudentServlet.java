@@ -127,7 +127,7 @@ public class StudentServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
-		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
+		batch = ((Year-1) % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 
@@ -147,7 +147,7 @@ public class StudentServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
-		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
+		batch = ((Year-1) % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 		Student book = new Student(StudentID, Password, FirstName, LastName, Email, Department, Year, batch, role,
@@ -160,7 +160,7 @@ public class StudentServlet extends HttpServlet {
 			throws SQLException, IOException {
 		String StudentID = request.getParameter("StudentID");
 		studentDAO.deleteStudent(StudentID);
-		response.sendRedirect("studentListstudentList");
+		response.sendRedirect("studentList");
 
 	}
 

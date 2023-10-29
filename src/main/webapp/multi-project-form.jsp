@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 // Check if the user has an active session
-response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 HttpSession ses = request.getSession(false);
 if (ses == null || ses.getAttribute("username") == null) {
@@ -24,7 +24,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 
 <body>
 	<header>
-		<nav class="navbar navbar-expand-md  navbar-dark"
+		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: #123455">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
 			<a href="#" class="navbar-brand"> Project Management </a>
@@ -39,7 +39,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 					<form action="updateProject" method="post">
 				</c:if>
 				<c:if test="${Project == null}">
-					<form action="insertProject" method="post">
+					<form action="insertMultipleProjects" method="post">
 				</c:if>
 
 				<caption>
@@ -58,7 +58,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 						value="<c:out value='${Project.projectID}' />" />
 				</c:if>
 
-				<c:if test="${Project== null}">
+				<c:if test="${Project == null}">
 					<fieldset class="form-group" hidden>
 						<label>Project ID</label> <input type="text" name="projectID"
 							id="projectID" value="<c:out value='${Project.projectID}' />"
@@ -67,8 +67,6 @@ if (ses == null || ses.getAttribute("username") == null) {
 				</c:if>
 
 				<!-- Add multiple project titles and batch IDs -->
-
-
 				<div class="row">
 					<div class="col-md-4">
 						<fieldset class="form-group">
@@ -78,10 +76,13 @@ if (ses == null || ses.getAttribute("username") == null) {
 								<option value="Mini Project"
 									<c:if test="${Project.projectType == 'Mini Project'}">selected</c:if>>Mini
 									Project</option>
-								<option value="Major Project Stage-I"
+								<option value="Major Project"
+									<c:if test="${Project.projectType == 'Major Project'}">selected</c:if>>Major
+									Project</option>
+								<option value="Major Project Stage-I" hidden
 									<c:if test="${Project.projectType == 'Major Project Stage-I'}">selected</c:if>>Major
 									Project Stage-I</option>
-								<option value="Major Project Stage-II"
+								<option value="Major Project Stage-II" hidden
 									<c:if test="${Project.projectType == 'Major Project Stage-II'}">selected</c:if>>Major
 									Project Stage-II</option>
 							</select>
@@ -106,22 +107,16 @@ if (ses == null || ses.getAttribute("username") == null) {
 						</fieldset>
 					</div>
 					<div class="col-md-4">
-						<fieldset class="form-group">
-							<label for="academicYear">Academic Year</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="academicYear"
-									id="academicYearInput" placeholder="Ex: 2023-24"
-									value="${Project.academicYear }" required="required">
-								<div class="input-group-append">
-									<span class="input-group-text clear-input" id="clearInput">Clear</span>
-								</div>
-							</div>
-						</fieldset>
+						<label for="year">Academic Year </label> <select
+							class="form-control" id="academic-year-select" name="academicYear">
+							<option value="" hidden>Select academic year</option>
+						</select>
+
 					</div>
 				</div>
 
 				<!-- Your other form fields go here -->
-				<div id="projectFields">
+				<div class="projectFields">
 					<div class="row">
 						<div class="col-md-12">
 							<hr>
@@ -129,14 +124,15 @@ if (ses == null || ses.getAttribute("username") == null) {
 						<div class="col-md-7">
 							<fieldset class="form-group">
 								<label for="projectTitle">Project Title</label>
-								<textarea rows="1" class="form-control no-scrollbar"
-									name="projectTitle" id="projectTitleInput" required="required"></textarea>
+								<textarea rows="1"
+									class="form-control no-scrollbar projectTitleInput"
+									name="projectTitle[]" required="required"></textarea>
 							</fieldset>
 						</div>
 						<div class="col-md-4">
 							<fieldset class="form-group">
 								<label for="facultyAdvisorID">Project Faculty Guide</label> <select
-									class="form-control" name="facultyAdvisorID">
+									class="form-control" name="facultyAdvisorID[]">
 									<option value="" hidden>Select Project Guide</option>
 									<c:if test="${listFaculty != null}">
 										<c:forEach var="Faculty" items="${listFaculty}">
@@ -154,20 +150,19 @@ if (ses == null || ses.getAttribute("username") == null) {
 						</div>
 						<div class="col-md-3">
 							<fieldset class="form-group">
-								<label for="batchID">Batch ID (<i
+								<label for="batch">Batch (<i
 									style="font-size: small">Optional</i>)
-								</label> <input type="text" class="form-control" name="batchID">
+								</label> <input type="text" class="form-control" name="batch[]">
 							</fieldset>
 						</div>
 						<div class="col-md-1">
 							<fieldset class="form-group">
 								<label>&nbsp;</label>
-								<button type="button" class="btn btn-danger btn-sm" 
-									onclick="removeProject(this)">Delete</button>
+								<button type="button"
+									class="btn btn-danger btn-sm removeProject">Delete</button>
 							</fieldset>
 						</div>
 					</div>
-
 				</div>
 
 				<div class="row justify-content-between">
@@ -176,11 +171,11 @@ if (ses == null || ses.getAttribute("username") == null) {
 							class="btn btn-primary btn-sm">Add Another Project</button>
 					</div>
 					<div class="col-md-auto">
-						<button type="submit" id="submitBtn" class="btn btn-success btn-lg">Save</button>
+						<button type="submit" id="submitBtn"
+							class="btn btn-success btn-lg">Save</button>
 					</div>
 				</div>
 				</form>
-
 			</div>
 		</div>
 	</div>
@@ -190,7 +185,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/project-form.js"></script>
 	<script type="text/javascript" src="js/multi-project-form.js"></script>
+	<script type="text/javascript" src="js/academicYearGenerator.js"></script>
 </body>
 </html>

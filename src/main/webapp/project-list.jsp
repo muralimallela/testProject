@@ -26,7 +26,8 @@ if (session == null || session.getAttribute("username") == null) {
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
-			<a href="#" class="navbar-brand">&nbsp; Project Management </a>
+			<a href="<%=request.getContextPath()%>/listProject" class="navbar-brand">&nbsp; Project Management </a>
+			<a class="navbar-brand no-print" style="margin-left: 200px;">List of Projects</a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
@@ -34,9 +35,9 @@ if (session == null || session.getAttribute("username") == null) {
 	<div class="row">
 		<img class="d-none d-print-block" src="images/SaiSpruthi.jpg"
 			style="border-radius: 10px;" width=100% height=130>
-		<hr class="d-none">
+		
 		<div class="d-none d-print-block container">
-
+			<hr >
 			<h4 class="text-center d-print-block">DEPARTMENT OF COMPUTER
 				SCIENCE AND ENGINEERING</h4>
 			<h3 class="text-center d-none d-print-block">Project Report</h3>
@@ -60,37 +61,45 @@ if (session == null || session.getAttribute("username") == null) {
 			<!-- Filter Start -->
 			<div class="container d-print-none"
 				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
-				<form id="myForm" action="studentList" method="post">
+				<form id="myForm" action="projectFilter" method="post">
 					<div class="form-row">
 						<div class="col-md-3">
-							<label for="year">Joining Year </label> <select
-								class="form-control" id="yearSelect" name="year">
-								<option value="" hidden>Select joining year</option>
+							<label for="year">Academic Year </label> <select
+								class="form-control" id="academic-year-select" name="academicYear">
+								<option value="" hidden>Select academic year</option>
 							</select>
 						</div>
 						<div class="col-md-3">
 							<label for="branch">Branch </label> <select class="form-control"
 								id="branch" name="branch">
-								<option value="" hidden>Select branch code</option>
-								<option value="CSE">CSE</option>
-								<option value="EEE">EEE</option>
-								<option value="MECH">MECH</option>
-								<option value="CSM">CSM</option>
-								<option value="ECE">ECE</option>
+								<option value="" hidden>Select branch</option>
+								<option value="CS">CSE</option>
+								<option value="EE">EEE</option>
+								<option value="ME">MECH</option>
+								<option value="CM">CSM</option>
+								<option value="EC">ECE</option>
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="branch">Project Type </label> <select class="form-control"
-								id="branch" name="branch">
+							<label for="branch">Project Type </label> <select
+								class="form-control" id="branch" name="projectType">
 								<option value="" hidden>Select type of project</option>
 								<option value="Mini Project">Mini Project</option>
-								<option value="Major Project Stage-I">Major Project Stage-I</option>
-								<option value="Major Project Stage-II">Major Project Stage-II</option>
+								<option value="Major Project">Major Project</option>
+								<option value="Major Project Stage-I" hidden>Major Project
+									Stage-I</option>
+								<option value="Major Project Stage-II" hidden>Major Project
+									Stage-II</option>
 							</select>
 						</div>
 						<div class="col-md-2">
 							<label>&nbsp</label><br>
 							<button type="submit" class="btn btn-primary">Filter</button>
+						</div>
+						<div class="col-md-1 d-flex  justify-content-end align-items-end">
+							<label>&nbsp</label><br> <a type="button"
+								class="btn  btn-lg"><img src="images/printer.png" width=30
+								onclick="window.print()" title="Print"></a>
 						</div>
 					</div>
 				</form>
@@ -105,6 +114,7 @@ if (session == null || session.getAttribute("username") == null) {
 						<th>ProjectType</th>
 						<th>FacultyGuide</th>
 						<th class="no-print">Branch</th>
+						<th class="no-print">Batch</th>
 						<th class="no-print">AcademicYear</th>
 						<th class="no-print">Actions</th>
 					</tr>
@@ -123,6 +133,7 @@ if (session == null || session.getAttribute("username") == null) {
 									</c:if>
 								</c:forEach></td>
 							<td class="no-print"><c:out value="${Project.branch}" /></td>
+							<td class="no-print"><c:out value="${Project.batch}" /></td>
 							<td class="no-print"><c:out value="${Project.academicYear}" /></td>
 							<td class="no-print"><a
 								href="editProject?projectID=<c:out value='${Project.projectID}' />"><img
@@ -147,5 +158,6 @@ if (session == null || session.getAttribute("username") == null) {
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 	<script src="js/dataTables.js"></script>
+	<script src="js/academicYearGenerator.js"></script>
 </body>
 </html>

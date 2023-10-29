@@ -7,6 +7,7 @@ public class Project {
 	private String projectType;
 	private String facultyAdvisorID;
 	private String branch;
+	private String batch;
 	private String academicYear;
 
 	public String getBranch() {
@@ -15,6 +16,14 @@ public class Project {
 
 	public void setBranch(String branch) {
 		this.branch = branch;
+	}
+
+	public String getBatch() {
+		return batch;
+	}
+
+	public void setBatch(String batch) {
+		this.batch = batch;
 	}
 
 	public String getAcademicYear() {
@@ -62,13 +71,14 @@ public class Project {
 	}
 
 	public Project(String projectID, String projectTitle, String projectType, String facultyAdvisorID, String branch,
-			String academicYear) {
+			String batch, String academicYear) {
 		super();
 		this.projectID = projectID;
 		this.projectTitle = projectTitle;
 		this.projectType = projectType;
 		this.facultyAdvisorID = facultyAdvisorID;
 		this.branch = branch;
+		this.batch = batch;
 		this.academicYear = academicYear;
 	}
 

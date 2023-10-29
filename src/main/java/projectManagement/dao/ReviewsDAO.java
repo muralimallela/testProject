@@ -16,12 +16,12 @@ public class ReviewsDAO {
 	}
 
 	SqlConnection sqlconnection = new SqlConnection();
-	private static final String INSERT_REVIEW = "INSERT INTO reviews" + "(studentID, reviewPoints, remarks, reviewedDate, reviewedFaculty) VALUES "
-			+ " ( ?, ?, ?, ?, ? );";
-	private static final String SELECT_REVIEW_BY_ID = "select * from reviews where reviewID = ? ;";
+	private static final String INSERT_REVIEW = "INSERT INTO reviews"
+			+ "(reviewID ,studentID, projectID, guide, srFaculty, HOD) VALUES " + " ( ?, ?, ?, ?, ?, ? );";
+	private static final String SELECT_REVIEW_BY_ID = "select * from reviews";
 	private static final String SELECT_ALL_REVIEWS = "select * from reviews where studentID = ? ;";
 	private static final String DELETE_REVIEW = "delete from reviews where reviewID = ? ;";
-	private static final String UPDATE_REVIEW = "update reviews set studentID= ?, reviewPoints =?, remarks = ?, reviewedDate = ?, reviewedFaculty = ? where reviewID = ? ;";
+	private static final String UPDATE_REVIEW = "update reviews set studentID= ?, projectID =?, guide = ?, srFaculty = ?, HOD = ? where reviewID = ? ;";
 
 	public void insertReview(Reviews reviews) throws SQLException {
 		System.out.println(INSERT_REVIEW);
@@ -29,10 +29,10 @@ public class ReviewsDAO {
 		try (Connection connection = sqlconnection.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_REVIEW)) {
 			preparedStatement.setString(1, reviews.getStudentID());
-			preparedStatement.setInt(2, reviews.getReviewPoints());
-			preparedStatement.setString(3, reviews.getRemarks());
-			preparedStatement.setString(4, reviews.getReviewedDate());
-			preparedStatement.setString(5, reviews.getReviewedFaculty());
+			preparedStatement.setString(2, reviews.getProjectID());
+			preparedStatement.setInt(3, reviews.getGuide());
+			preparedStatement.setInt(4, reviews.getSrFaculty());
+			preparedStatement.setInt(5, reviews.getHod());
 
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
@@ -54,38 +54,42 @@ public class ReviewsDAO {
 
 			while (rs.next()) {
 				String studentID = rs.getString("studentID");
-				int reviewPoints = rs.getInt("reviewPoints");
-				String remarks = rs.getString("remarks");
-				String reviewedDate = rs.getString("reviewedDate");
-				String reviewedFaculty = rs.getString("reviewedFaculty");
-				
-				review = new Reviews(reviewID, studentID, reviewPoints, remarks,reviewedDate,reviewedFaculty);
+				String projectID = rs.getString("projectID");
+				int guide = rs.getInt("guide");
+				int srFaculty = rs.getInt("srFaculty");
+				int hod = rs.getInt("HOD");
+				int avg = rs.getInt("HOD");
+				int marks = rs.getInt("Marks");
+				review = new Reviews(reviewID, studentID, projectID, guide, srFaculty, hod,avg, marks);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		return review;
 	}
-	
-	public List<Reviews> selectAllReviews(String studentID) {
+
+	public List<Reviews> selectAllReviews() {
 
 		List<Reviews> reviews = new ArrayList<>();
 
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_REVIEWS);) {
-			preparedStatement.setString(1, studentID);
+			
 			System.out.println(preparedStatement);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				int reviewID = rs.getInt("reviewID");
-				int reviewPoints = rs.getInt("reviewPoints");
-				String remarks = rs.getString("remarks");
-				String reviewedDate = rs.getString("reviewedDate");
-				String reviewedFaculty = rs.getString("reviewedFaculty");
-				reviews.add(new Reviews(reviewID,studentID, reviewPoints, remarks,reviewedDate,reviewedFaculty));
+				String studentID = rs.getString("studentID");
+				String projectID = rs.getString("projectID");
+				int guide = rs.getInt("guide");
+				int srFaculty = rs.getInt("srFaculty");
+				int hod = rs.getInt("HOD");
+				int avg = rs.getInt("avg");
+				int marks = rs.getInt("Marks");
+				reviews.add(new Reviews(reviewID,studentID, projectID, guide,srFaculty,hod,avg,marks));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -102,7 +106,7 @@ public class ReviewsDAO {
 		}
 		return rowDeleted;
 	}
-	
+
 	public boolean updateReview(Reviews review) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = sqlconnection.getConnection();
@@ -111,18 +115,17 @@ public class ReviewsDAO {
 			System.out.println("updated Review: " + statement);
 
 			statement.setString(1, review.getStudentID());
-			statement.setInt(2, review.getReviewPoints());
-			statement.setString(3, review.getRemarks());
-			statement.setString(4, review.getReviewedDate());
-			statement.setString(5, review.getReviewedFaculty());
+			statement.setString(2, review.getProjectID());
+			statement.setInt(3, review.getGuide());
+			statement.setInt(4, review.getSrFaculty());
+			statement.setInt(5, review.getHod());
 			statement.setInt(6, review.getReviewID());
-			
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
 	}
-	
+
 	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {

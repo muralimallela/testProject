@@ -14,9 +14,9 @@ public class InsertBatchData {
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             for (int i = 1; i <= 20; i++) {
-                String batchID = "21CS" + String.format("%02d", i);
+                String batchID = "24CS" + String.format("%02d", i);
 
-                String insertQuery = "INSERT INTO batch (batchID) VALUES (?)";
+                String insertQuery = "INSERT INTO batches (batch) VALUES (?)";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                     preparedStatement.setString(1, batchID);

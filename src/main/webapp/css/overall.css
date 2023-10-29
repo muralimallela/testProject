@@ -16,9 +16,11 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 .container-edit {
 	margin-top: 100px;
 }
+
 .container1 {
 	margin-top: 50px;
 }
@@ -29,7 +31,7 @@
 
 @page {
 	size: auto;
-	margin: none;
+	margin: 1in;
 	/* Adjust margins as needed */
 }
 
@@ -38,11 +40,21 @@
 	.container .table-bordered {
 		font-size: 15px;
 	}
+
 	.container1 {
-	margin:0px;
-}
-	.no-print, label, .dataTables_info, .dataTables_paginate {
+		margin: 0 auto;
+	}
+
+	.no-print,
+	label,
+	.dataTables_info,
+	.dataTables_paginate {
 		display: none;
+	}
+
+	table {
+		margin: none;
+		/* Center the table horizontally */
 	}
 }
 

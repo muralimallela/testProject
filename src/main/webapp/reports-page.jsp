@@ -68,6 +68,11 @@ if (session == null || session.getAttribute("username") == null) {
 							<button type="submit" class="btn btn-primary"
 								onclick="checkInputs()">Filter</button>
 						</div>
+						<div class="col-md-2 d-flex  justify-content-end align-items-end">
+							<label>&nbsp</label><br> <a type="button"
+								class="btn  btn-lg"><img src="images/printer.png" width=30
+								onclick="window.print()" title="Print"></a>
+						</div>
 					</div>
 				</form>
 			</div>

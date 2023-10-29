@@ -16,8 +16,8 @@ import projectManagement.dao.ReviewsDAO;
 import projectManagement.dao.StudentReviewDAO;
 import projectManagement.model.Reviews;
 
-@WebServlet({ "/StudentReviewServlet","/deleteReview", "/studentReview","/searchStudentReview","/insertReview","/updateReview","/reviewList" })
-public class StudentReviewServlet extends HttpServlet {
+@WebServlet({ "/ReviewServlet","/deleteReview", "/studentReview","/searchStudentReview","/insertReview","/updateReview","/reviewList" })
+public class ReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private StudentReviewDAO studentReviewDAO;
@@ -63,7 +63,7 @@ public class StudentReviewServlet extends HttpServlet {
 				updateReview(request, response);
 				break;
 			case "/reviewList":
-				listReview(request, response);
+				reviewList(request, response);
 				break;
 
 			}
@@ -73,7 +73,7 @@ public class StudentReviewServlet extends HttpServlet {
 		}
 	}
 
-	private void listReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void reviewList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String studentID = request.getParameter("studentID");
 		List<Reviews> listReviews = reviewsDAO.selectAllReviews(studentID);

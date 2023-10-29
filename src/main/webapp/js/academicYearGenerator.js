@@ -5,7 +5,7 @@
 function generateAcademicYears(startYear, endYear) {
 	const academicYears = [];
 	for (let year = endYear; year >= startYear; year--) {
-		const academicYear = year + "-" + (year + 1).toString().substring(2);
+		const academicYear = (year + 1) + "-" + (year + 2).toString().substring(2);
 		academicYears.push(academicYear);
 	}
 	return academicYears;

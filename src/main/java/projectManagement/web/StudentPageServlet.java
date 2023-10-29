@@ -180,7 +180,7 @@ public class StudentPageServlet extends HttpServlet {
 		System.out.println(project);
 
 		List<Reviews> reviews = new ArrayList<>();
-		reviews = reviewsDAO.selectAllReviews(studentID);
+//		reviews = reviewsDAO.selectAllReviews(studentID);
 		request.setAttribute("listReviews", reviews);
 		System.out.println(reviews);
 
@@ -202,7 +202,7 @@ public class StudentPageServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
-		batch = (Year % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);;
+		batch = ((Year-1) % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);;
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 

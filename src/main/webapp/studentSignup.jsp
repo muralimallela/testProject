@@ -65,7 +65,7 @@
 							name="Email" required>
 					</fieldset>
 					<fieldset class="form-group">
-						<label>Joining Year</label> <input id="yearSelect" name="Year"
+						<label>Pass Out Year</label> <input id="yearSelect" name="Year"
 							class="form-control" required>
 					</fieldset>
 
@@ -137,7 +137,7 @@
 			// Year (Auto Complete)
 			
 			const firstTwoChars = inputValue.substring(0, 2);
-		    const year = "20" + firstTwoChars;
+		    const year = "20" + (Number(firstTwoChars)+4);
 		    yearSelect.value = year;
 		    
 		    // Department (Auto Complete)

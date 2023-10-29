@@ -77,7 +77,7 @@ if (session == null || session.getAttribute("studentID") == null) {
 									<td><c:out value="${student.department}"></c:out></td>
 								</tr>
 								<tr>
-									<th>Joining Year</th>
+									<th>Pass out Year</th>
 									<td><c:out value="${student.year}"></c:out></td>
 								</tr>
 								<tr>
@@ -86,7 +86,7 @@ if (session == null || session.getAttribute("studentID") == null) {
 								</tr>
 								<tr>
 									<th>Batch</th>
-									<td><c:out value="${student.batch}"></c:out></td>
+									<td><c:out value="${student.batch.substring(4)}"></c:out></td>
 								</tr>
 								<tr>
 									<th>Contact Number</th>

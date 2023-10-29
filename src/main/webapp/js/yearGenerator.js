@@ -12,7 +12,7 @@ var startYear = 2000;
 var endYear = currentYear ;
 
 // Create and append the options to the select element
-for (var year = currentYear; year >= startYear; year--) {
+for (var year = currentYear+2; year >= startYear; year--) {
 	var option = document.createElement("option");
 	option.value = year;
 	option.text = year;

@@ -78,10 +78,13 @@ if (session == null || session.getAttribute("username") == null) {
 						<option value="Mini Project"
 							<c:if test="${Project.projectType == 'Mini Project'}">selected</c:if>>Mini
 							Project</option>
-						<option value="Major Project Stage-I"
+						<option value="Major Project"
+							<c:if test="${Project.projectType == 'Major Project'}">selected</c:if>>Major
+							Project</option>
+						<option value="Major Project Stage-I" hidden
 							<c:if test="${Project.projectType == 'Major Project Stage-I'}">selected</c:if>>Major
 							Project Stage-I</option>
-						<option value="Major Project Stage-II"
+						<option value="Major Project Stage-II" hidden
 							<c:if test="${Project.projectType == 'Major Project Stage-II'}">selected</c:if>>Major
 							Project Stage-II</option>
 					</select>
