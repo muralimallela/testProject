@@ -7,37 +7,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import projectManagement.model.Project;
+
 public class StudentReviewDAO {
 
 	public StudentReviewDAO() {
 		 
 	}
-	private static final String STUDENT_REVIEW_SEARCH = "SELECT"+" s.studentID,s.firstname,s.lastname,s.year,p.projectID,p.projecttitle,p.projectType,f.firstname,f.lastname"+
-			" FROM projects p"+
-			" JOIN students s ON s.batch = p.batch"+
-			" JOIN faculty f ON f.facultyID = p.facultyAdvisorID"+
-			" WHERE s.StudentID=?;";
+	private static final String STUDENT_PROJECT = "SELECT p.ProjectID,p.ProjectTitle,p.ProjectType,p.FacultyAdvisorID,p.Branch,p.Batch,p.AcademicYear from projects p join students s on p.Batch=s.Batch where s.StudentID= ?";
 	
 	SqlConnection sqlconnection = new SqlConnection();
 	
-	public List<String> selectStudent(String studentID) {
-		List<String> student = new ArrayList<>();
+	public List<Project> selectStudent(String studentID) {
+		List<Project> project = new ArrayList<>();
 		try (Connection connection = sqlconnection.getConnection();
 				
-				PreparedStatement preparedStatement = connection.prepareStatement(STUDENT_REVIEW_SEARCH);) {
+				PreparedStatement preparedStatement = connection.prepareStatement(STUDENT_PROJECT);) {
 			preparedStatement.setString(1, studentID);
 			System.out.println(preparedStatement);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				for (int i = 1; i <= 11; i++)
-					student.add(rs.getString(i));
+				String projectID = rs.getString(1);
+				System.out.println(projectID);
+				String projectTitle = rs.getString(2);
+				String projectType = rs.getString(3);
+				String facultyAdvisorID = rs.getString(4);
+				String branch = rs.getString(5);
+				String batch = rs.getString(6);
+				String AcademicYear = rs.getString(7);
+				project.add(new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch, batch, AcademicYear));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-		return student;
+		return project;
 	}
 	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {

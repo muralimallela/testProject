@@ -22,7 +22,7 @@ public class ProjectDAO {
 	private static final String PROJECT_FILTER = "select * from projects where AcademicYear = ? AND Branch = ? AND ProjectType = ?";
 	private static final String SELECT_ALL_POJECTS = "select * from projects";
 	private static final String DELETE_PROJECT_SQL = "delete from projects where projectID = ?;";
-	private static final String UPDATE_PROJECT_SQL = "update projects set ProjectTitle= ?, ProjectType =?, FacultyAdvisorID = ?, Branch = ?, batch = ? AcademicYear = ? where  projectID = ?;";
+	private static final String UPDATE_PROJECT_SQL = "update projects set ProjectTitle= ?, ProjectType =?, FacultyAdvisorID = ?, Branch = ?, batch = ?, AcademicYear = ? where  projectID = ?;";
 
 	SqlConnection sqlconnection = new SqlConnection();
 
@@ -143,15 +143,16 @@ public class ProjectDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement statement = connection.prepareStatement(UPDATE_PROJECT_SQL);) {
-			System.out.println("updated Project: " + statement);
+			
 
 			statement.setString(1, project.getProjectTitle());
 			statement.setString(2, project.getProjectType());
 			statement.setString(3, project.getFacultyAdvisorID());
 			statement.setString(4, project.getBranch());
-			statement.setString(4, project.getBatch());
-			statement.setString(5, project.getAcademicYear());
-			statement.setString(6, project.getProjectID());
+			statement.setString(5, project.getBatch());
+			statement.setString(6, project.getAcademicYear());
+			statement.setString(7, project.getProjectID());
+			System.out.println("updated Project: " + statement);
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;

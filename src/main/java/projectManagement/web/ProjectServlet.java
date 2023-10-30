@@ -178,6 +178,7 @@ public class ProjectServlet extends HttpServlet {
 		String branch = request.getParameter("branch");
 		String batch = request.getParameter("batch");
 		String academicYear = request.getParameter("academicYear");
+		batch =  academicYear.substring(2,4) + branch.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		Project book = new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch,batch, academicYear);
 		projectDAO.updateProject(book);
 		response.sendRedirect("listProject");

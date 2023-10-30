@@ -22,7 +22,7 @@
 					href="<%=request.getContextPath()%>/studentList">Students</a> <a
 					class="dropdown-item"
 					href="<%=request.getContextPath()%>/listFaculty">Faculty</a> <a
-					class="dropdown-item"
+					class="dropdown-item" hidden
 					href="<%=request.getContextPath()%>/listParticipants">Assign
 					Projects</a> <a class="dropdown-item"
 					href="<%=request.getContextPath()%>/listProject">Projects</a>
@@ -31,21 +31,27 @@
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 			href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 			aria-haspopup="true" aria-expanded="false"> Reports </a>
-			<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkRight">
-				<li><a class="dropdown-item" href="#">&laquo; Project Reports </a>
+			<ul class="dropdown-menu"
+				aria-labelledby="navbarDropdownMenuLinkRight">
+				<li><a class="dropdown-item" href="#">&laquo; Project
+						Reports </a>
 					<ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
-						<li><a class="dropdown-item" href="<%=request.getContextPath()%>/projectReports?projectType=MiniProject">Mini Project</a></li>
-						<li><a class="dropdown-item" href="<%=request.getContextPath()%>/projectReports?projectType=MajorProject">Major Project</a></li>
-					</ul>
-				</li>
-				<li><a class="dropdown-item" href="#">&laquo; Review Reports </a>
+						<li><a class="dropdown-item"
+							href="<%=request.getContextPath()%>/projectReports?projectType=MiniProject">Mini
+								Project</a></li>
+						<li><a class="dropdown-item"
+							href="<%=request.getContextPath()%>/projectReports?projectType=MajorProject">Major
+								Project</a></li>
+					</ul></li>
+				<li><a class="dropdown-item" href="#">&laquo; Review
+						Reports </a>
 					<ul class="dropdown-menu dropdown-submenu dropdown-submenu-left">
 						<li><a class="dropdown-item" href="#">Mini Project</a></li>
 						<li><a class="dropdown-item" href="#">Major Project</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
+					</ul></li>
+				<a class="dropdown-item" href="#">Batch Reports</a>
+				<a class="dropdown-item" href="#">Leader Reports</a>
+			</ul></li>
 		<!-- Reports END -->
 		<li class="nav-item"><a class="nav-link" href="Logout">Logout</a></li>
 	</ul>

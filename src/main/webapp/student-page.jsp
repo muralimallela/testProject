@@ -17,7 +17,8 @@ if (session == null || session.getAttribute("studentID") == null) {
 <meta charset="UTF-8">
 <title><c:out value="${student.firstName}"></c:out> <c:out
 		value="${student.lastName}"></c:out></title>
-<link rel="stylesheet" href="bootstrap\css\bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="bootstrap\css\bootstrap.min.css"
+	type="text/css">
 <link rel="stylesheet" href="css/student-page.css">
 </head>
 <body>
@@ -122,36 +123,46 @@ if (session == null || session.getAttribute("studentID") == null) {
 								</form>
 							</c:if>
 						</div>
-						<c:if test="${ project ==null || project == '[]'}">
+						<c:if test="${ projects ==null || projects == '[]'}">
 							<div class="card-body">
 								<p>No project has been assigned yet</p>
 							</div>
 						</c:if>
-						<c:if test="${project !=null && project != '[]'}">
-							<div class="card-body custom-card-project">
-								<table class="table table-bordered">
-									<tr>
-										<th>Project ID</th>
-										<td><c:out value="${project.get(4)}"></c:out></td>
-									</tr>
+						<c:forEach var="project" items="${projects}">
+							<c:if test="${project!=null && project!= '[]'}">
+								<div class="card-body custom-card-project">
 
-									<tr>
-										<th>Title</th>
-										<td><c:out value="${project.get(5)}"></c:out></td>
-									</tr>
 
-									<tr>
-										<th>Faculty Name</th>
-										<td><c:out value="${project.get(7)}"></c:out> <c:out
-												value="${project.get(8)}"></c:out></td>
-									</tr>
-									<tr>
-										<th>Description</th>
-										<td><c:out value="${project.get(6)}"></c:out></td>
-									</tr>
-								</table>
-							</div>
-						</c:if>
+									<table class="table table-bordered">
+										<tr>
+											<th>Project ID</th>
+											<td><c:out value="${project.projectID}"></c:out></td>
+										</tr>
+
+										<tr>
+											<th>Title</th>
+											<td><c:out value="${project.projectTitle}"></c:out></td>
+										</tr>
+										<tr>
+											<th>Project Type</th>
+											<td><c:out value="${project.projectType}"></c:out></td>
+										</tr>
+										<tr>
+											<th>Guide</th>
+											<td><c:forEach var="Faculty" items="${listFaculty}">
+													<c:if
+														test="${project.facultyAdvisorID ==Faculty.facultyID }">
+														<c:out value="${Faculty.firstName}" />
+														&ensp;
+														<c:out value="${Faculty.lastName}" />
+													</c:if>
+												</c:forEach></td>
+										</tr>
+									</table>
+
+								</div>
+							</c:if>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

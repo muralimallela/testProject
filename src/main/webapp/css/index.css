@@ -12,17 +12,19 @@
 
 
 body {
-	background-image: url('../images/back1.jpg');
+
+	/* background-color: #63DBDB; */
+	/* background-image: linear-gradient(225deg, #162938 0%, #784BA0 50%, #2B86C5 100%); */
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	color: white;
+	color: black;
 }
 
 .header {
 	position: fixed;
 	background-color: #162938;
-	color: #fff;
+	color: blak;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -111,6 +113,10 @@ body {
 	color: #162938;
 }
 
+.card {
+	border: 0;
+}
+
 .middle {
 	text-align: center;
 	padding-top: 50px;
@@ -121,8 +127,8 @@ body {
 }
 
 .card {
-	border: 2px solid rgb(225, 225, 225);
-	background-color: rgba(0, 0, 0, 0.2);
+	/* border: 2px solid rgb(225, 225, 225); */
+	/* background-color: rgba(0, 0, 0, 0.2); */
 	padding: 7PX;
 }
 
@@ -131,7 +137,7 @@ body {
 }
 
 .card-header {
-	border-color: whitesmoke;
+	border-color: transparent;
 	background: white;
 	background: transparent;
 	backdrop-filter: blur(2px);

@@ -58,7 +58,7 @@ if (session == null || session.getAttribute("username") == null) {
 					</button>
 				</a>
 			</div>
-			<div class="col-2">
+			<div class="col-2" hidden>
 				<a href="listParticipants" style="text-decoration: none">
 					<button class="btn btn-primary btn-block"
 						style="height: 150px; width: 180px">

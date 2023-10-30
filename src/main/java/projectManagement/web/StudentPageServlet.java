@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import projectManagement.dao.FacultyDAO;
 import projectManagement.dao.ReviewsDAO;
 import projectManagement.dao.StudentReviewDAO;
 import projectManagement.dao.studentDAO;
+import projectManagement.model.Faculty;
+import projectManagement.model.Project;
 import projectManagement.model.Reviews;
 import projectManagement.model.Student;
 
@@ -24,12 +27,12 @@ import projectManagement.model.Student;
 public class StudentPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private studentDAO studentDAO;
-	private ReviewsDAO reviewsDAO;
+	private FacultyDAO facultyDAO;
 	private StudentReviewDAO studentReviewDAO;
 
 	public void init() {
 		studentDAO = new studentDAO();
-		reviewsDAO = new ReviewsDAO();
+		facultyDAO = new FacultyDAO();
 		studentReviewDAO = new StudentReviewDAO();
 	}
 
@@ -173,16 +176,16 @@ public class StudentPageServlet extends HttpServlet {
 
 		Student existingStudent = studentDAO.selectStudent(studentID);
 		request.setAttribute("student", existingStudent);
+		List<Faculty> listFaculty = facultyDAO.selectAllFaculty();
+		request.setAttribute("listFaculty", listFaculty);
+		List<Project> projects = studentReviewDAO.selectStudent(studentID);
+		request.setAttribute("projects", projects);
+		System.out.println(projects);
 
-		List<String> project = new ArrayList<>();
-		project = studentReviewDAO.selectStudent(studentID);
-		request.setAttribute("project", project);
-		System.out.println(project);
-
-		List<Reviews> reviews = new ArrayList<>();
+//		List<Reviews> reviews = new ArrayList<>();
 //		reviews = reviewsDAO.selectAllReviews(studentID);
-		request.setAttribute("listReviews", reviews);
-		System.out.println(reviews);
+//		request.setAttribute("listReviews", reviews);
+//		System.out.println(reviews);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("student-page.jsp");
 		dispatcher.forward(request, response);

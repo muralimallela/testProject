@@ -105,8 +105,8 @@ if (session == null || session.getAttribute("username") == null) {
 					</select>
 				</c:if>
 				<fieldset class="form-group">
-					<label for="branch">Department</label> <select
-						class="form-control" name="branch">
+					<label for="branch">Department</label> <select class="form-control"
+						name="branch">
 						<option value="" hidden>Select Department</option>
 						<option value="CS"
 							<c:if test="${Project.branch == 'CS'}">selected</c:if>>CSE</option>
@@ -119,6 +119,10 @@ if (session == null || session.getAttribute("username") == null) {
 						<option value="EC"
 							<c:if test="${Project.branch == 'EC'}">selected</c:if>>ECE</option>
 					</select>
+				</fieldset>
+				<fieldset class="form-group">
+					<label>Batch</label>
+					<input class="form-control" value="${Project.batch.substring(4) }" name="batch" placeholder="Enter batch">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Academic Year</label>

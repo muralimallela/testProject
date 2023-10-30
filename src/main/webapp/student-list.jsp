@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 // Check if the user has an active session
 response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
@@ -64,8 +64,7 @@ if (session == null || session.getAttribute("username") == null) {
 						</div>
 						<div class="col-md-3">
 							<label for="year">Pass Out Year </label> <select
-								class="form-control" id="yearSelect"
-								name="year">
+								class="form-control" id="yearSelect" name="year">
 								<option value="" hidden>Select Pass Out year</option>
 							</select>
 						</div>
@@ -83,57 +82,58 @@ if (session == null || session.getAttribute("username") == null) {
 			</div>
 			<!-- Filter End -->
 			<br>
-
-			<table class="table table-bordered table-striped" id="dataTable">
-				<thead>
-					<tr>
-						<th>StudentID</th>
-						<th class="no-print">Password</th>
-						<th style="width: 200px">Name</th>
-						<th>Email</th>
-						<th class="no-print">Branch</th>
-						<th class="no-print">Year</th>
-						<th>Batch</th>
-						<th>Role</th>
-						<th>ContactNumber</th>
-						<th class="no-print">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="Student" items="${listStudent}">
+			<div class="table-responsive text-nowrap ">
+				<table class="table table-bordered table-striped " id="dataTable">
+					<thead>
 						<tr>
-							<td><c:out value="${Student.studentID}" /></td>
-							<td class="no-print"><c:choose>
-									<c:when test="${not empty Student.password}">
-										<c:forEach var="char" items="${Student.password}">
-											<c:out value="●●●●●●" />
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
+							<th>StudentID</th>
+							<th class="no-print">Password</th>
+							<th style="width: 200px">Name</th>
+							<th>Email</th>
+							<th class="no-print">Branch</th>
+							<th class="no-print">Year</th>
+							<th>Batch</th>
+							<th>Role</th>
+							<th>ContactNumber</th>
+							<th class="no-print">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="Student" items="${listStudent}">
+							<tr>
+								<td><c:out value="${Student.studentID}" /></td>
+								<td class="no-print"><c:choose>
+										<c:when test="${not empty Student.password}">
+											<c:forEach var="char" items="${Student.password}">
+												<c:out value="●●●●●●" />
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
 										NULL
 									</c:otherwise>
-								</c:choose></td>
-							<td style="width: 280px"><c:out value="${Student.firstName}" />
-								<c:out value="${Student.lastName}" /></td>
-							<td><c:out value="${Student.email}" /></td>
-							<td class="no-print"><c:out value="${Student.department}" /></td>
-							<td class="no-print"><c:out value="${Student.year}" /></td>
-							<td><c:out value="${Student.batch.substring(4)}" /></td>
-							<td><c:out value="${Student.role}" /></td>
-							<td><c:out value="${Student.contactNumber}" /></td>
-							<td class="no-print"><a
-								href="editStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/edit.png" title="Edit"
-									width=18></a>&nbsp; <a
-								href="deleteStudent?StudentID=<c:out value='${Student.studentID}' />"><img
-									class="image" alt="" src="images/trash.png" title="Delete"
-									width=18></a></td>
-						</tr>
-					</c:forEach>
+									</c:choose></td>
+								<td style="width: 280px"><c:out
+										value="${Student.firstName}" /> <c:out
+										value="${Student.lastName}" /></td>
+								<td><c:out value="${Student.email}" /></td>
+								<td class="no-print"><c:out value="${Student.department}" /></td>
+								<td class="no-print"><c:out value="${Student.year}" /></td>
+								<td><c:out value="${Student.batch.substring(4)}" /></td>
+								<td><c:out value="${Student.role}" /></td>
+								<td><c:out value="${Student.contactNumber}" /></td>
+								<td class="no-print"><a
+									href="editStudent?StudentID=<c:out value='${Student.studentID}' />"><img
+										class="image" alt="" src="images/edit.png" title="Edit"
+										width=18></a>&nbsp; <a
+									href="deleteStudent?StudentID=<c:out value='${Student.studentID}' />"><img
+										class="image" alt="" src="images/trash.png" title="Delete"
+										width=18></a></td>
+							</tr>
+						</c:forEach>
 
-				</tbody>
-			</table>
-
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<script type="module"

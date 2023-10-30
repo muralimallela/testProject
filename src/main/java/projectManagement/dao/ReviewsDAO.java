@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import projectManagement.model.Project;
 import projectManagement.model.Reviews;
+import projectManagement.model.Student;
 
 public class ReviewsDAO {
 
@@ -19,6 +21,8 @@ public class ReviewsDAO {
 	private static final String INSERT_REVIEW = "INSERT INTO reviews"
 			+ "(reviewID ,studentID, projectID, guide, srFaculty, HOD) VALUES " + " ( ?, ?, ?, ?, ?, ? );";
 	private static final String SELECT_REVIEW_BY_ID = "select * from reviews";
+	private static final String SELECT_PROJECT = "select * from projects WHERE batch = ? AND projectType = ?";
+	private static final String SELECT_STUDENT = "SELECT *  FROM `students` WHERE batch = ? ";
 	private static final String SELECT_ALL_REVIEWS = "select * from reviews where studentID = ? ;";
 	private static final String DELETE_REVIEW = "delete from reviews where reviewID = ? ;";
 	private static final String UPDATE_REVIEW = "update reviews set studentID= ?, projectID =?, guide = ?, srFaculty = ?, HOD = ? where reviewID = ? ;";
@@ -28,11 +32,12 @@ public class ReviewsDAO {
 
 		try (Connection connection = sqlconnection.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_REVIEW)) {
-			preparedStatement.setString(1, reviews.getStudentID());
-			preparedStatement.setString(2, reviews.getProjectID());
-			preparedStatement.setInt(3, reviews.getGuide());
-			preparedStatement.setInt(4, reviews.getSrFaculty());
-			preparedStatement.setInt(5, reviews.getHod());
+			preparedStatement.setInt(1, reviews.getReviewID());
+			preparedStatement.setString(2, reviews.getStudentID());
+			preparedStatement.setString(3, reviews.getProjectID());
+			preparedStatement.setInt(4, reviews.getGuide());
+			preparedStatement.setInt(5, reviews.getSrFaculty());
+			preparedStatement.setInt(6, reviews.getHod());
 
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
@@ -60,12 +65,70 @@ public class ReviewsDAO {
 				int hod = rs.getInt("HOD");
 				int avg = rs.getInt("HOD");
 				int marks = rs.getInt("Marks");
-				review = new Reviews(reviewID, studentID, projectID, guide, srFaculty, hod,avg, marks);
+				review = new Reviews(reviewID, studentID, projectID, guide, srFaculty, hod, avg, marks);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		return review;
+	}
+	public Project selectProject(String batch, String projectType) {
+		Project project = null;
+
+		try (Connection connection = sqlconnection.getConnection();
+
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PROJECT);) {
+			preparedStatement.setString(1, batch);
+			preparedStatement.setString(2, projectType);
+			System.out.println(preparedStatement);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				String projectID = rs.getString("projectID");
+				String projectTitle = rs.getString("projectTitle");
+//				String projectType = rs.getString("projectType");
+				String facultyAdvisorID = rs.getString("facultyAdvisorID");
+				String branch = rs.getString("branch");
+//				String batch = rs.getString("batch");
+				String AcademicYear = rs.getString("AcademicYear");
+				project = new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch, batch, AcademicYear);
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return project;
+	}
+
+	public List<Student> selectStudent(String batch) {
+		List<Student> student = new ArrayList<>();
+
+		try (Connection connection = sqlconnection.getConnection();
+
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENT);) {
+			preparedStatement.setString(1, batch);
+			System.out.println(preparedStatement);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				String studentID = rs.getString("StudentID");
+				String Password = rs.getString("Password");
+				String FirstName = rs.getString("FirstName");
+				String LastName = rs.getString("LastName");
+				String Email = rs.getString("Email");
+				String Department = rs.getString("Department");
+				int Year = rs.getInt("Year");
+//				String batch = rs.getString("batch");
+				String role = rs.getString("role");
+				String ContactNumber = rs.getString("ContactNumber");
+				student.add(new Student(studentID, Password, FirstName, LastName, Email, Department, Year, batch, role,
+						ContactNumber));
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return student;
 	}
 
 	public List<Reviews> selectAllReviews() {
@@ -75,7 +138,7 @@ public class ReviewsDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_REVIEWS);) {
-			
+
 			System.out.println(preparedStatement);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -89,7 +152,7 @@ public class ReviewsDAO {
 				int hod = rs.getInt("HOD");
 				int avg = rs.getInt("avg");
 				int marks = rs.getInt("Marks");
-				reviews.add(new Reviews(reviewID,studentID, projectID, guide,srFaculty,hod,avg,marks));
+				reviews.add(new Reviews(reviewID, studentID, projectID, guide, srFaculty, hod, avg, marks));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

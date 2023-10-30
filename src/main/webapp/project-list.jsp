@@ -133,7 +133,7 @@ if (session == null || session.getAttribute("username") == null) {
 									</c:if>
 								</c:forEach></td>
 							<td class="no-print"><c:out value="${Project.branch}" /></td>
-							<td class="no-print"><c:out value="${Project.batch}" /></td>
+							<td class="no-print"><c:out value="${Project.batch.substring(4)}" /></td>
 							<td class="no-print"><c:out value="${Project.academicYear}" /></td>
 							<td class="no-print"><a
 								href="editProject?projectID=<c:out value='${Project.projectID}' />"><img
