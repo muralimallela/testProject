@@ -2,7 +2,6 @@ package projectManagement.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,12 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import projectManagement.dao.FacultyDAO;
-import projectManagement.dao.ReviewsDAO;
 import projectManagement.dao.StudentReviewDAO;
 import projectManagement.dao.studentDAO;
 import projectManagement.model.Faculty;
 import projectManagement.model.Project;
-import projectManagement.model.Reviews;
 import projectManagement.model.Student;
 
 @WebServlet({ "/StudentPageServlet", "/StudentLogin", "/StudentLogout", "/StudentEdit", "/StudentUpdate",

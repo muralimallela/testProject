@@ -126,7 +126,7 @@ public class studentDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement statement = connection.prepareStatement(UPDATE_STUDENT_SQL);) {
-			System.out.println("updated Student: " + statement);
+			
 			
 			statement.setString(1, student.getPassword());
 			statement.setString(2, student.getFirstName());
@@ -138,7 +138,7 @@ public class studentDAO {
 			statement.setString(8, student.getRole());
 			statement.setString(9, student.getContactNumber());
 			statement.setString(10, student.getStudentID());
-
+			System.out.println("updated Student: " + statement);
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;

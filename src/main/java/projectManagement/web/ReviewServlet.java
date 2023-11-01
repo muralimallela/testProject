@@ -2,7 +2,6 @@ package projectManagement.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -25,12 +24,11 @@ import projectManagement.model.Student;
 public class ReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private StudentReviewDAO studentReviewDAO;
 	private ReviewsDAO reviewsDAO;
 	private FacultyDAO facultyDAO;
 
 	public void init() {
-		studentReviewDAO = new StudentReviewDAO();
+		new StudentReviewDAO();
 		reviewsDAO = new ReviewsDAO();
 		facultyDAO = new FacultyDAO();
 
@@ -52,9 +50,9 @@ public class ReviewServlet extends HttpServlet {
 			case "/studentReview":
 				studentReview(request, response);
 				break;
-			case "/searchStudentReview":
-				searchStudent(request, response);
-				break;
+//			case "/searchStudentReview":
+//				searchStudent(request, response);
+//				break;
 //			case "/newReview":
 //				showNewProjectForm(request, response);
 //				break;
@@ -67,12 +65,12 @@ public class ReviewServlet extends HttpServlet {
 			case "/getBatch":
 				getBatch(request, response);
 				break;
-			case "/updateReview":
-				updateReview(request, response);
-				break;
-			case "/reviewList":
-				reviewList(request, response);
-				break;
+//			case "/updateReview":
+//				updateReview(request, response);
+//				break;
+//			case "/reviewList":
+//				reviewList(request, response);
+//				break;
 
 			}
 
@@ -100,32 +98,32 @@ public class ReviewServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+//
+//	private void reviewList(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
 
-	private void reviewList(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+//		String studentID = request.getParameter("studentID");
+//		List<Reviews> listReviews = reviewsDAO.selectAllReviews(studentID);
+//		request.setAttribute("listReviews", listReviews);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
+//		dispatcher.forward(request, response);
+//
+//	}
 
-		String studentID = request.getParameter("studentID");
-		List<Reviews> listReviews = reviewsDAO.selectAllReviews(studentID);
-		request.setAttribute("listReviews", listReviews);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
-		dispatcher.forward(request, response);
-
-	}
-
-	private void updateReview(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		int reviewID = Integer.parseInt(request.getParameter("reviewID"));
-		String studentID = request.getParameter("studentID");
-		int reviewPoints = Integer.parseInt(request.getParameter("reviewPoints"));
-		String remarks = request.getParameter("remarks");
-		String reviewedDate = request.getParameter("reviewedDate");
-		String reviewedFaculty = request.getParameter("reviewedFaculty");
-		Reviews book = new Reviews(reviewID, studentID, reviewPoints, remarks, reviewedDate, reviewedFaculty);
-		reviewsDAO.updateReview(book);
-		response.sendRedirect("searchStudentReview?studentID=" + studentID);
-
-	}
+//	private void updateReview(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		int reviewID = Integer.parseInt(request.getParameter("reviewID"));
+//		String studentID = request.getParameter("studentID");
+//		int reviewPoints = Integer.parseInt(request.getParameter("reviewPoints"));
+//		String remarks = request.getParameter("remarks");
+//		String reviewedDate = request.getParameter("reviewedDate");
+//		String reviewedFaculty = request.getParameter("reviewedFaculty");
+//		Reviews book = new Reviews(reviewID, studentID, reviewPoints, remarks, reviewedDate, reviewedFaculty);
+//		reviewsDAO.updateReview(book);
+//		response.sendRedirect("searchStudentReview?studentID=" + studentID);
+//
+//	}
 
 	private void deleteReview(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
@@ -163,20 +161,20 @@ public class ReviewServlet extends HttpServlet {
 		response.sendRedirect("studentReview");
 	}
 
-	private void searchStudent(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-		String studentID = request.getParameter("studentID");
-		List<String> student = new ArrayList<>();
-		student = studentReviewDAO.selectStudent(studentID);
-		System.out.println(student);
-
-		List<Reviews> listReviews = reviewsDAO.selectAllReviews(studentID);
-		request.setAttribute("listReviews", listReviews);
-		System.out.println(listReviews);
-		request.setAttribute("student", student);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
-		dispatcher.forward(request, response);
-	}
+//	private void searchStudent(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException, ServletException {
+//		String studentID = request.getParameter("studentID");
+//		List<String> student = new ArrayList<>();
+//		student = studentReviewDAO.selectStudent(studentID);
+//		System.out.println(student);
+//
+//		List<Reviews> listReviews = reviewsDAO.selectAllReviews(studentID);
+//		request.setAttribute("listReviews", listReviews);
+//		System.out.println(listReviews);
+//		request.setAttribute("student", student);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
+//		dispatcher.forward(request, response);
+//	}
 
 	private void studentReview(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {

@@ -13,10 +13,8 @@ if (session == null || session.getAttribute("username") == null) {
 <html>
 <head>
 <title>reports</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="maxcdn/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
 <link rel="stylesheet" type="text/css" href="css/reports-page.css">
 <style>
@@ -34,7 +32,7 @@ if (session == null || session.getAttribute("username") == null) {
 		</nav>
 	</header>
 	<br>
-
+	<jsp:include page="print-header.jsp"></jsp:include>
 	<div class="row">
 
 		<div class="container">
@@ -77,7 +75,7 @@ if (session == null || session.getAttribute("username") == null) {
 				</form>
 			</div>
 			<!-- Filter End -->
-			<hr>
+			<hr class ="d-print-none">
 
 			<table class="table-bordered" id="dataTable">
 				<thead>
@@ -105,13 +103,10 @@ if (session == null || session.getAttribute("username") == null) {
 		</div>
 	</div>
 	<!-- page-search -->
-	<script type="text/javascript" src="page-search.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/reports-page.js"></script>
 	<script src="js/academicYearGenerator.js"></script>
 </body>

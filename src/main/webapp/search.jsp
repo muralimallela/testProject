@@ -17,8 +17,7 @@ if (session == null || session.getAttribute("username") == null) {
 <head>
 <meta charset="UTF-8">
 <title>Search</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="maxcdn/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
 <link rel="stylesheet" href="css/search.css">
 
@@ -257,10 +256,8 @@ if (session == null || session.getAttribute("username") == null) {
 			}
 		}
 	</script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

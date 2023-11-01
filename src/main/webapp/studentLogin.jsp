@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSIT : Sai Spurthi Institute of Technology</title>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="maxcdn/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/studentLogin.css">
 
 </head>
@@ -61,9 +60,9 @@
 		</div>
 	</div>
 	<script type="module"
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		src="js/ionicons.esm.js"></script>
 	<script nomodule
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		src="js/ionicons.js"></script>
 </body>
 
 </html>

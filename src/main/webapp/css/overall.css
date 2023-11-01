@@ -32,13 +32,13 @@
 @page {
 	size: auto;
 	margin: 0;
-	/* Adjust margins as needed */
+	
 }
 
-/* Example: Hide elements when printing */
+
 @media print {
 	.container .table-bordered {
-		font-size: 15px;
+		font-size: 12px;
 	}
 
 	.container1 {

@@ -14,9 +14,7 @@ if (session == null || session.getAttribute("username") == null) {
 <head>
 <title>Faculty Management</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	href="maxcdn/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
 
 </head>
@@ -97,11 +95,9 @@ if (session == null || session.getAttribute("username") == null) {
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- FACULTY ID VALIDATION 
 	<script type="text/javascript">

@@ -13,12 +13,11 @@ if (session == null || session.getAttribute("username") == null) {
 <html>
 <head>
 <title>Project Management</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+	href="maxcdn/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/datatables.min.css">
 <link rel="stylesheet" href="css/overall.css">
 </head>
 <body>
@@ -26,24 +25,18 @@ if (session == null || session.getAttribute("username") == null) {
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
-			<a href="<%=request.getContextPath()%>/listProject" class="navbar-brand">&nbsp; Project Management </a>
-			<a class="navbar-brand no-print" style="margin-left: 200px;">List of Projects</a>
+			<a href="<%=request.getContextPath()%>/listProject"
+				class="navbar-brand">&nbsp; Project Management </a> <a
+				class="navbar-brand no-print" style="margin-left: 200px;">List
+				of Projects</a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
 	<br>
+	<jsp:include page="print-header.jsp"></jsp:include>
 	<div class="row">
-		<img class="d-none d-print-block" src="images/SaiSpruthi.jpg"
-			style="border-radius: 10px;" width=100% height=130>
-		
-		<div class="d-none d-print-block container">
-			<hr >
-			<h4 class="text-center d-print-block">DEPARTMENT OF COMPUTER
-				SCIENCE AND ENGINEERING</h4>
-			<h3 class="text-center d-none d-print-block">Project Report</h3>
-		</div>
-		<div class="container container1">
-			<h3 class="text-center no-print">List of Projects</h3>
+		<div class="container ">
+			<h3 class="text-center no-print container1">List of Projects</h3>
 			<hr class="no-print">
 			<div class="container text-left no-print">
 				<div class="row">
@@ -65,7 +58,8 @@ if (session == null || session.getAttribute("username") == null) {
 					<div class="form-row">
 						<div class="col-md-3">
 							<label for="year">Academic Year </label> <select
-								class="form-control" id="academic-year-select" name="academicYear">
+								class="form-control" id="academic-year-select"
+								name="academicYear">
 								<option value="" hidden>Select academic year</option>
 							</select>
 						</div>
@@ -86,10 +80,10 @@ if (session == null || session.getAttribute("username") == null) {
 								<option value="" hidden>Select type of project</option>
 								<option value="Mini Project">Mini Project</option>
 								<option value="Major Project">Major Project</option>
-								<option value="Major Project Stage-I" hidden>Major Project
-									Stage-I</option>
-								<option value="Major Project Stage-II" hidden>Major Project
-									Stage-II</option>
+								<option value="Major Project Stage-I" hidden>Major
+									Project Stage-I</option>
+								<option value="Major Project Stage-II" hidden>Major
+									Project Stage-II</option>
 							</select>
 						</div>
 						<div class="col-md-2">
@@ -133,7 +127,8 @@ if (session == null || session.getAttribute("username") == null) {
 									</c:if>
 								</c:forEach></td>
 							<td class="no-print"><c:out value="${Project.branch}" /></td>
-							<td class="no-print"><c:out value="${Project.batch.substring(4)}" /></td>
+							<td class="no-print"><c:out
+									value="${Project.batch.substring(4)}" /></td>
 							<td class="no-print"><c:out value="${Project.academicYear}" /></td>
 							<td class="no-print"><a
 								href="editProject?projectID=<c:out value='${Project.projectID}' />"><img
@@ -148,15 +143,12 @@ if (session == null || session.getAttribute("username") == null) {
 			</table>
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 	<!-- page-search -->
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+	<script src="js/datatables.min.js"></script>
 	<script src="js/dataTables.js"></script>
 	<script src="js/academicYearGenerator.js"></script>
 </body>

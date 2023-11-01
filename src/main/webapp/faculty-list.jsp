@@ -13,11 +13,11 @@ if (session == null || session.getAttribute("username") == null) {
 <html>
 <head>
 <title>Faculty Management</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="maxcdn/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+<link rel="stylesheet" href="css/datatables.min.css">
+
 </head>
 <body>
 
@@ -84,14 +84,11 @@ if (session == null || session.getAttribute("username") == null) {
 			</table>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+	
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/datatables.min.js"></script>
 	<script src="js/dataTables.js" type="text/javascript"></script>
 </body>
 </html>

@@ -8,11 +8,12 @@
 		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
  */
 $(document).ready(function() {
-	$("#dataTable").DataTable({
-		'aoColumnDefs': [{
-			'bSortable': false,
-			'aTargets': [-1]
-			/* 1st one, start by the right */
-		}]
-	});
-})
+    $("#dataTable").DataTable({
+        columnDefs: [
+            {
+                targets: [-1], // Target the last column
+                orderable: false, // Make it non-sortable
+            }
+        ]
+    });
+});

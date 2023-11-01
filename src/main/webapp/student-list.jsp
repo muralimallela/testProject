@@ -14,17 +14,17 @@ if (session == null || session.getAttribute("username") == null) {
 <html>
 <head>
 <title>Student Management</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+	href="maxcdn/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/datatables.min.css">
+<link rel="stylesheet" href="css/buttons.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/overall.css">
 <link rel="stylesheet" href="css/student-list.css">
 </head>
 <body>
 	<header>
+
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
@@ -33,10 +33,10 @@ if (session == null || session.getAttribute("username") == null) {
 		</nav>
 	</header>
 	<br>
-
-	<div>
-		<div class="container container1 ">
-			<h3 class="text-center no-print">List of Students</h3>
+	<jsp:include page="print-header.jsp"></jsp:include>
+	<div class="row">
+		<div class="container  ">
+			<h3 class="text-center no-print container1">List of Students</h3>
 			<hr class="no-print">
 			<div class="container text-left no-print">
 				<div class="row">
@@ -46,6 +46,7 @@ if (session == null || session.getAttribute("username") == null) {
 					</div>
 				</div>
 			</div>
+
 			<!-- Filter Start -->
 			<div class="container d-print-none"
 				style="background-color: aliceblue; padding: 20px; margin-top: 20px">
@@ -138,16 +139,14 @@ if (session == null || session.getAttribute("username") == null) {
 	</div>
 	<script type="module"
 		src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule
-		src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+	
+	<script src="jquery/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/datatables.min.js"></script>
+	
 	<script src="js/dataTables.js"></script>
 	<script type="text/javascript" src="js/yearGenerator.js"></script>
+	
 </body>
 </html>

@@ -17,7 +17,8 @@ if (session == null || session.getAttribute("studentID") == null) {
 <meta charset="UTF-8">
 <title><c:out value="${student.firstName}"></c:out> <c:out
 		value="${student.lastName}"></c:out></title>
-<link rel="stylesheet" href="bootstrap\css\bootstrap.min.css"
+
+<link rel="stylesheet" href="maxcdn/bootstrap/css/bootstrap.min.css"
 	type="text/css">
 <link rel="stylesheet" href="css/student-page.css">
 </head>
