@@ -10,6 +10,7 @@ if (session == null || session.getAttribute("username") == null) {
 	response.sendRedirect("adminLogin"); // Redirect to login page if not logged in
 }
 %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Project Management</title>
@@ -75,7 +76,7 @@ if (session == null || session.getAttribute("username") == null) {
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="branch">Project Type </label> <select
+							<label for="projectType">Project Type </label> <select
 								class="form-control" id="branch" name="projectType">
 								<option value="" hidden>Select type of project</option>
 								<option value="Mini Project">Mini Project</option>
@@ -87,20 +88,21 @@ if (session == null || session.getAttribute("username") == null) {
 							</select>
 						</div>
 						<div class="col-md-2">
-							<label>&nbsp</label><br>
+							&nbsp;<br>
 							<button type="submit" class="btn btn-primary">Filter</button>
 						</div>
 						<div class="col-md-1 d-flex  justify-content-end align-items-end">
-							<label>&nbsp</label><br> <a type="button"
-								class="btn  btn-lg"><img src="images/printer.png" width=30
-								onclick="window.print()" title="Print"></a>
+							&nbsp;<br> <a type="button" class="btn  btn-lg"><img
+								src="images/printer.png" width=30 onclick="window.print()"
+								title="Print"></a>
 						</div>
 					</div>
 				</form>
 			</div>
 			<!-- Filter End -->
 			<br>
-			<table class="table table-bordered" id="dataTable">
+			<table class="table table-bordered text-center  table-hover"
+				id="dataTable">
 				<thead>
 					<tr>
 						<th>ProjectID</th>
@@ -117,7 +119,7 @@ if (session == null || session.getAttribute("username") == null) {
 					<c:forEach var="Project" items="${listProject}">
 						<tr>
 							<td><c:out value="${Project.projectID}" /></td>
-							<td><c:out value="${Project.projectTitle}" /></td>
+							<td class="text-left"><c:out value="${Project.projectTitle}" /></td>
 							<td><c:out value="${Project.projectType}" /></td>
 							<td><c:forEach var="Faculty" items="${listFaculty}">
 									<c:if test="${Project.facultyAdvisorID ==Faculty.facultyID }">
@@ -143,9 +145,9 @@ if (session == null || session.getAttribute("username") == null) {
 			</table>
 		</div>
 	</div>
-	
+
 	<script src="jquery/jquery.slim.min.js"></script>
-	<script src="js/popper.min.js"></script>
+	<script src="js/popper.min.js" data-source-map="popper.min.js.map"></script>
 	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 	<!-- page-search -->
 	<script src="js/datatables.min.js"></script>

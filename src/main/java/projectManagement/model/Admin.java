@@ -1,11 +1,11 @@
 package projectManagement.model;
 
 public class Admin {
-	
+
 	String username;
 	String password;
-	
-	
+
+
 
 	public String getUsername() {
 		return username;
@@ -28,7 +28,7 @@ public class Admin {
 
 
 	public Admin() {
-		
+
 	}
 
 }

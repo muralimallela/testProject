@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import projectManagement.dao.FacultyDAO;
 import projectManagement.dao.ReviewsDAO;
 import projectManagement.dao.StudentReviewDAO;
-import projectManagement.dao.FacultyDAO;
 import projectManagement.model.Faculty;
 import projectManagement.model.Project;
 import projectManagement.model.Reviews;
@@ -27,6 +27,7 @@ public class ReviewServlet extends HttpServlet {
 	private ReviewsDAO reviewsDAO;
 	private FacultyDAO facultyDAO;
 
+	@Override
 	public void init() {
 		new StudentReviewDAO();
 		reviewsDAO = new ReviewsDAO();
@@ -34,12 +35,14 @@ public class ReviewServlet extends HttpServlet {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

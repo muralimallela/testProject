@@ -21,6 +21,7 @@ if (session == null || session.getAttribute("studentID") == null) {
 <link rel="stylesheet" href="maxcdn/bootstrap/css/bootstrap.min.css"
 	type="text/css">
 <link rel="stylesheet" href="css/student-page.css">
+<link rel="stylesheet" href="css/overall.css">
 </head>
 <body>
 	<div class="header">

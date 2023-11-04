@@ -24,17 +24,20 @@ public class ParticipantServlet extends HttpServlet {
 	private ParticipantsDAO participantsDAO;
 	private ProjectDAO projectDAO;
 
+	@Override
 	public void init() {
 		participantsDAO = new ParticipantsDAO();
 		projectDAO = new ProjectDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

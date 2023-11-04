@@ -71,7 +71,7 @@ public class ProjectDAO {
 		}
 		return project;
 	}
-	
+
 	public List<Project> filterProjects(String academicYear, String branch, String projectType) {
 		List<Project> project = new ArrayList<>();
 		try (Connection connection = sqlconnection.getConnection();
@@ -143,7 +143,7 @@ public class ProjectDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement statement = connection.prepareStatement(UPDATE_PROJECT_SQL);) {
-			
+
 
 			statement.setString(1, project.getProjectTitle());
 			statement.setString(2, project.getProjectType());

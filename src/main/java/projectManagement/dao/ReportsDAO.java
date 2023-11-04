@@ -27,7 +27,7 @@ public class ReportsDAO {
 		if ("MajorProject".equalsIgnoreCase(projectType)) {
 			if (branch != null && academicYear != null) {
 				query = MAJOR_PROJECT_REPORTS_BY_BRANCH;
-				
+
 			} else {
 				query = MAJOR_PROJECT_REPORTS;
 				System.out.println("major Project");

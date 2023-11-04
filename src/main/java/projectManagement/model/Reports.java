@@ -1,7 +1,7 @@
 package projectManagement.model;
 
 public class Reports {
-	
+
 	private String batch;
 	private String studentID;
 	private String studentName;
@@ -46,7 +46,7 @@ public class Reports {
 		this.facultyName = facultyName;
 	}
 	public Reports() {
-		
+
 	}
 
 }

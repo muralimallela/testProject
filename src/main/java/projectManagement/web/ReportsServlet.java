@@ -20,16 +20,19 @@ public class ReportsServlet extends HttpServlet {
 
 	private ReportsDAO reportsDAO;
 
+	@Override
 	public void init() {
 		new Reports();
 		reportsDAO = new ReportsDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();

@@ -9,9 +9,9 @@ public class Reviews {
 	private int hod;
 	private int avg;
 	private int marks;
-	
+
 	public Reviews() {}
-	
+
 	public Reviews(int reviewID, String studentID, String projectID, int guide, int srFaculty, int hod, int avg,
 			int marks) {
 		super();
@@ -24,7 +24,7 @@ public class Reviews {
 		this.avg = avg;
 		this.marks = marks;
 	}
-	
+
 	public Reviews(int reviewID, String studentID, String projectID, int guide, int srFaculty, int hod) {
 		super();
 		this.reviewID = reviewID;

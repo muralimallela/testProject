@@ -10,6 +10,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 	response.sendRedirect("adminLogin"); // Redirect to the login page if not logged in
 }
 %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Project Management</title>
@@ -57,7 +58,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 
 				<c:if test="${Project == null}">
 					<fieldset class="form-group" hidden>
-						<label>Project ID</label> <input type="text" name="projectID"
+						<label for="projectID">Project ID</label> <input type="text" name="projectID"
 							id="projectID" value="<c:out value='${Project.projectID}' />"
 							class="form-control">
 					</fieldset>
@@ -68,7 +69,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 					<div class="col-md-4">
 						<fieldset class="form-group">
 							<label for="projectType">Project Type</label> <select
-								class="form-control" name="projectType" required="required">
+								class="form-control" id="projectType" name="projectType" required="required">
 								<option value="" hidden>Select Project Type</option>
 								<option value="Mini Project"
 									<c:if test="${Project.projectType == 'Mini Project'}">selected</c:if>>Mini
@@ -88,8 +89,8 @@ if (ses == null || ses.getAttribute("username") == null) {
 					<div class="col-md-4">
 						<fieldset class="form-group">
 							<label for="branch">Department</label> <select
-								class="form-control" name="branch">
-								<option value="" hidden>Select Department</option>
+								class="form-control" name="branch" id="branch" required="required">
+								<option value="" hidden="hidden">Select Department</option>
 								<option value="CS"
 									<c:if test="${Project.branch == 'CS'}">selected</c:if>>CSE</option>
 								<option value="EE"
@@ -104,8 +105,8 @@ if (ses == null || ses.getAttribute("username") == null) {
 						</fieldset>
 					</div>
 					<div class="col-md-4">
-						<label for="year">Academic Year </label> <select
-							class="form-control" id="academic-year-select" name="academicYear">
+						<label for="academic-year-select">Academic Year </label> <select
+							class="form-control" id="academic-year-select" name="academicYear" required="required">
 							<option value="" hidden>Select academic year</option>
 						</select>
 
@@ -121,7 +122,7 @@ if (ses == null || ses.getAttribute("username") == null) {
 						<div class="col-md-7">
 							<fieldset class="form-group">
 								<label for="projectTitle">Project Title</label>
-								<textarea rows="1"
+								<textarea rows="1" id="projectTitle"
 									class="form-control no-scrollbar projectTitleInput"
 									name="projectTitle[]" required="required"></textarea>
 							</fieldset>
@@ -129,12 +130,12 @@ if (ses == null || ses.getAttribute("username") == null) {
 						<div class="col-md-4">
 							<fieldset class="form-group">
 								<label for="facultyAdvisorID">Project Faculty Guide</label> <select
-									class="form-control" name="facultyAdvisorID[]">
+									class="form-control" name="facultyAdvisorID[]" id="facultyAdvisorID" required>
 									<option value="" hidden>Select Project Guide</option>
 									<c:if test="${listFaculty != null}">
 										<c:forEach var="Faculty" items="${listFaculty}">
 											<c:if test="${Project.facultyAdvisorID == Faculty.facultyID}">
-												<option value="${Project.facultyAdvisorID}" selected hidden>${Faculty.firstName}&ensp;${Faculty.lastName}</option>
+												<option value="${Project.facultyAdvisorID}" selected hidden="hidden">${Faculty.firstName}&ensp;${Faculty.lastName}</option>
 											</c:if>
 											<option value="${Faculty.facultyID}">
 												<c:out value="${Faculty.firstName}" />&ensp;
@@ -147,14 +148,13 @@ if (ses == null || ses.getAttribute("username") == null) {
 						</div>
 						<div class="col-md-3">
 							<fieldset class="form-group">
-								<label for="batch">Batch (<i
-									style="font-size: small">Optional</i>)
-								</label> <input type="text" class="form-control" name="batch[]">
+								<label for="batch">Batch 
+								</label> <input type="text" id="batch" class="form-control" name="batch[]" required>
 							</fieldset>
 						</div>
 						<div class="col-md-1">
 							<fieldset class="form-group">
-								<label>&nbsp;</label>
+								&nbsp;
 								<button type="button"
 									class="btn btn-danger btn-sm removeProject">Delete</button>
 							</fieldset>

@@ -15,7 +15,7 @@ public class Participants {
 		this.projectID = projectID;
 		this.batch = batch;
 	}
-	
+
 	public Participants(int participantID, String projectID, String batch) {
 		super();
 		this.participantID = participantID;
@@ -46,7 +46,7 @@ public class Participants {
 	public void setBatch(String batch) {
 		this.batch = batch;
 	}
-	
+
 
 
 }

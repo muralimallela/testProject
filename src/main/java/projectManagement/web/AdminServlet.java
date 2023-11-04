@@ -1,6 +1,7 @@
 package projectManagement.web;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,16 +18,19 @@ public class AdminServlet extends HttpServlet {
 
 	private AdminDAO adminDAO;
 
+	@Override
 	public void init() {
 		adminDAO = new AdminDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -38,7 +38,7 @@
 
 @media print {
 	.container .table-bordered {
-		font-size: 12px;
+		font-size: 15px;
 	}
 
 	.container1 {
@@ -48,7 +48,7 @@
 	.no-print,
 	label,
 	.dataTables_info,
-	.dataTables_paginate {
+	.dataTables_paginate,th ::before, th ::after {
 		display: none;
 	}
 

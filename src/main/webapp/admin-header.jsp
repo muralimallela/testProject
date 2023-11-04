@@ -4,7 +4,7 @@
 	aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
 </button>
-<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+<div class="collapse navbar-collapse justify-content-end navbar-dark" id="navbarNav">
 	<ul class="navbar-nav">
 		<li class="nav-item"><a
 			href="<%=request.getContextPath()%>/admin" class="nav-link">Home</a></li>
@@ -25,7 +25,7 @@
 					class="dropdown-item" hidden
 					href="<%=request.getContextPath()%>/listParticipants">Assign
 					Projects</a> <a class="dropdown-item"
-					href="<%=request.getContextPath()%>/listProject">Projects</a>
+					href="<%=request.getContextPath()%>/projectList">Projects</a>
 			</div></li>
 		<!-- REPORTS -->
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"

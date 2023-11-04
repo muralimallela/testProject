@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InsertBatchData {
-    
+
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/projectManagement";
         String user = "root";

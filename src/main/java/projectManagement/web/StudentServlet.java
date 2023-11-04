@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import projectManagement.dao.FacultyDAO;
 import projectManagement.dao.studentDAO;
 import projectManagement.model.Faculty;
@@ -22,17 +23,20 @@ public class StudentServlet extends HttpServlet {
 	private studentDAO studentDAO;
 	private FacultyDAO facultyDAO;
 
+	@Override
 	public void init() {
 		studentDAO = new studentDAO();
 		facultyDAO = new FacultyDAO();
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();

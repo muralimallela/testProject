@@ -11,6 +11,7 @@ if (session == null || session.getAttribute("username") == null) {
 	response.sendRedirect("adminLogin"); // Redirect to login page if not logged in
 }
 %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Student Management</title>
@@ -28,7 +29,7 @@ if (session == null || session.getAttribute("username") == null) {
 		<nav class="navbar navbar-expand-md  navbar-dark"
 			style="background-color: #123455">
 			<jsp:include page="ssit-logo.jsp"></jsp:include>
-			<a href="#" class="navbar-brand"> Student Management </a>
+			<a href="#" class="navbar-brand">&ensp;Student Management </a>
 			<jsp:include page="admin-header.jsp"></jsp:include>
 		</nav>
 	</header>
@@ -64,7 +65,7 @@ if (session == null || session.getAttribute("username") == null) {
 							</select>
 						</div>
 						<div class="col-md-3">
-							<label for="year">Pass Out Year </label> <select
+							<label for="yearSelect">Pass Out Year </label> <select
 								class="form-control" id="yearSelect" name="year">
 								<option value="" hidden>Select Pass Out year</option>
 							</select>
@@ -117,12 +118,16 @@ if (session == null || session.getAttribute("username") == null) {
 										value="${Student.firstName}" /> <c:out
 										value="${Student.lastName}" /></td>
 								<td><c:out value="${Student.email}" /></td>
-								<td class="no-print"><c:out value="${Student.department}" /></td>
-								<td class="no-print"><c:out value="${Student.year}" /></td>
-								<td><c:out value="${Student.batch.substring(4)}" /></td>
-								<td><c:out value="${Student.role}" /></td>
-								<td><c:out value="${Student.contactNumber}" /></td>
-								<td class="no-print"><a
+								<td class="no-print text-center"><c:out
+										value="${Student.department}" /></td>
+								<td class="no-print text-center"><c:out
+										value="${Student.year}" /></td>
+								<td class="text-center"><c:out
+										value="${Student.batch.substring(4)}" /></td>
+								<td class="text-center"><c:out value="${Student.role}" /></td>
+								<td class="text-center"><c:out
+										value="${Student.contactNumber}" /></td>
+								<td class="no-print text-center"><a
 									href="editStudent?StudentID=<c:out value='${Student.studentID}' />"><img
 										class="image" alt="" src="images/edit.png" title="Edit"
 										width=18></a>&nbsp; <a
@@ -139,14 +144,14 @@ if (session == null || session.getAttribute("username") == null) {
 	</div>
 	<script type="module"
 		src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	
+
 	<script src="jquery/jquery.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="maxcdn/bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/datatables.min.js"></script>
-	
+
 	<script src="js/dataTables.js"></script>
 	<script type="text/javascript" src="js/yearGenerator.js"></script>
-	
+
 </body>
 </html>

@@ -32,7 +32,7 @@ public class SearchDAO {
 
 	public List<String> selectStudent(String studentID) {
 		List<String> stringList = new ArrayList<>();
-		
+
 
 		try (Connection connection = sqlconnection.getConnection();
 
@@ -55,13 +55,13 @@ public class SearchDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-		
+
 		return stringList;
 	}
 
 	public List<List<String>> selectFaculty(String searchFaculty) {
 		List<String> List = new ArrayList<>();
-		;
+
 
 		try (Connection connection = sqlconnection.getConnection();
 
@@ -86,7 +86,7 @@ public class SearchDAO {
 			printSQLException(e);
 		}
 		List<List<String>> subLists = splitListIntoSubLists(List, 7);
-		
+
 		return subLists;
 	}
 

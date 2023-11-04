@@ -12,16 +12,16 @@ import projectManagement.model.Project;
 public class StudentReviewDAO {
 
 	public StudentReviewDAO() {
-		 
+
 	}
 	private static final String STUDENT_PROJECT = "SELECT p.ProjectID,p.ProjectTitle,p.ProjectType,p.FacultyAdvisorID,p.Branch,p.Batch,p.AcademicYear from projects p join students s on p.Batch=s.Batch where s.StudentID= ?";
-	
+
 	SqlConnection sqlconnection = new SqlConnection();
-	
+
 	public List<Project> selectStudent(String studentID) {
 		List<Project> project = new ArrayList<>();
 		try (Connection connection = sqlconnection.getConnection();
-				
+
 				PreparedStatement preparedStatement = connection.prepareStatement(STUDENT_PROJECT);) {
 			preparedStatement.setString(1, studentID);
 			System.out.println(preparedStatement);

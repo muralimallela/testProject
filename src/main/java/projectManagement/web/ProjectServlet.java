@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import projectManagement.model.Faculty;
-import projectManagement.model.Project;
 import projectManagement.dao.FacultyDAO;
 import projectManagement.dao.ProjectDAO;
+import projectManagement.model.Faculty;
+import projectManagement.model.Project;
 
-@WebServlet({ "/insertProject", "/listProject", "/updateProject", "/deleteProject", "/newProject", "/editProject",
+@WebServlet({ "/insertProject", "/listProject","/projectList", "/updateProject", "/deleteProject", "/newProject", "/editProject",
 		"/insertMultipleProjects", "/projectFilter" })
 
 public class ProjectServlet extends HttpServlet {
@@ -24,16 +24,19 @@ public class ProjectServlet extends HttpServlet {
 	private ProjectDAO projectDAO;
 	private FacultyDAO facultyDAO;
 
+	@Override
 	public void init() {
 		projectDAO = new ProjectDAO();
 		facultyDAO = new FacultyDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
@@ -59,6 +62,9 @@ public class ProjectServlet extends HttpServlet {
 				updateProject(request, response);
 				break;
 			case "/listProject":
+				listProject(request, response);
+				break;
+			case "/projectList":
 				listProject(request, response);
 				break;
 			case "/projectFilter":
@@ -166,7 +172,7 @@ public class ProjectServlet extends HttpServlet {
 		batch = academicYear.substring(2,4) + branch.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		Project newProject = new Project(ProjectID, projectTitle, projectType, facultyAdvisorID, branch,batch, academicYear);
 		projectDAO.insertProject(newProject);
-		response.sendRedirect("listProject");
+		response.sendRedirect("projectList");
 	}
 
 	private void updateProject(HttpServletRequest request, HttpServletResponse response)
@@ -181,14 +187,14 @@ public class ProjectServlet extends HttpServlet {
 		batch =  academicYear.substring(2,4) + branch.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		Project book = new Project(projectID, projectTitle, projectType, facultyAdvisorID, branch,batch, academicYear);
 		projectDAO.updateProject(book);
-		response.sendRedirect("listProject");
+		response.sendRedirect("projectList");
 	}
 
 	private void deleteProject(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		String projectID = request.getParameter("projectID");
 		projectDAO.deleteProject(projectID);
-		response.sendRedirect("listProject");
+		response.sendRedirect("projectList");
 
 	}
 

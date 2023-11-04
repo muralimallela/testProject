@@ -19,6 +19,6 @@ for (var year = currentYear+2; year >= startYear; year--) {
 	yearSelect.appendChild(option);
 }
 
-// Set the default selected year (optional)
+/*Set the default selected year (optional)
 var defaultYear = currentYear;
-select.value = defaultYear;
+yearSelect.value = defaultYear;*/

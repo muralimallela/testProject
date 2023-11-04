@@ -23,17 +23,20 @@ public class SearchServlet extends HttpServlet {
 	SearchDAO searchDAO;
 	FacultyDAO facultyDAO;
 
+	@Override
 	public void init() {
 		searchDAO = new SearchDAO();
 		facultyDAO = new FacultyDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -83,23 +86,23 @@ public class SearchServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		List<Faculty> listFaculty = facultyDAO.selectAllFaculty();
 		request.setAttribute("listFaculty", listFaculty);
-		
+
 		String searchFaculty = request.getParameter("searchFaculty");
 		List<List<String>> stringList = new ArrayList<>();
 		stringList = searchDAO.selectFaculty(searchFaculty);
-		
+
 		request.setAttribute("subLists", stringList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");
 		dispatcher.forward(request, response);
 
 	}
-	
+
 
 	private void showRole(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Faculty> listFaculty = facultyDAO.selectAllFaculty();
 		request.setAttribute("listFaculty", listFaculty);
-		
+
 		String searchRole = request.getParameter("searchRole");
 		List<List<String>> stringList = new ArrayList<>();
 		stringList = searchDAO.selectRole(searchRole);

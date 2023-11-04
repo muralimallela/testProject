@@ -19,7 +19,7 @@ public class studentDAO {
 	private static final String DELETE_STUDENT_SQL = "delete from students where StudentID = ? ";
 	private static final String UPDATE_STUDENT_SQL = "UPDATE students SET Password = ?, FirstName= ?, LastName =?, Email = ?, Department = ?, Year = ?, batch = ?, role = ?, ContactNumber = ? WHERE  StudentID = ?;";
 	private static final String	STUDENT_LOGIN = "SELECT * FROM students WHERE studentID = ? AND password = ?; ";
-	
+
 	SqlConnection sqlconnection = new SqlConnection();
 
 	public void insertStudent(Student student) throws SQLException {
@@ -126,8 +126,8 @@ public class studentDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement statement = connection.prepareStatement(UPDATE_STUDENT_SQL);) {
-			
-			
+
+
 			statement.setString(1, student.getPassword());
 			statement.setString(2, student.getFirstName());
 			statement.setString(3, student.getLastName());
@@ -143,7 +143,7 @@ public class studentDAO {
 		}
 		return rowUpdated;
 	}
-	
+
 	public boolean validate(String studentID, String password) {
 		boolean status = false;
 		try (Connection connection = sqlconnection.getConnection();
@@ -161,7 +161,7 @@ public class studentDAO {
 		return status;
 	}
 
-	
+
 	private String  printSQLException(SQLException ex) {
 		String err = null;
 		for (Throwable e : ex) {

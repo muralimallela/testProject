@@ -57,9 +57,9 @@ $(document).ready(function() {
 	$(".container1").on("click", "#addProject", function() {
 		// Clone the project fields and add them to the form
 		var clonedFields = $(".projectFields").first().clone();
-		clonedFields.find("textarea[name='projectTitle']").val("");
-		clonedFields.find("input[name='facultyAdvisorID']").val("");
-		clonedFields.find("input[name='batchID']").val("");
+		clonedFields.find("input, textarea, select").each(function() {
+			$(this).val(""); // Clear the value of each input element
+		});
 		$(".projectFields").last().after(clonedFields);
 	});
 });

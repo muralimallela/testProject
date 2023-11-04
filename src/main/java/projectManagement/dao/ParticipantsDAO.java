@@ -74,7 +74,7 @@ public class ParticipantsDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				
+
 				int participantID = rs.getInt("participantID");
 				String projectID = rs.getString("projectID");
 				String studentBatch = rs.getString("batch");
@@ -101,7 +101,7 @@ public class ParticipantsDAO {
 		try (Connection connection = sqlconnection.getConnection();
 
 				PreparedStatement statement = connection.prepareStatement(UPDATE_PARTICIPANT_SQL);) {
-			
+
 
 			statement.setString(1, participant.getProjectID());
 			statement.setString(2, participant.getBatch());

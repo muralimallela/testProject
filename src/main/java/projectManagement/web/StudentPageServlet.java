@@ -27,17 +27,20 @@ public class StudentPageServlet extends HttpServlet {
 	private FacultyDAO facultyDAO;
 	private StudentReviewDAO studentReviewDAO;
 
+	@Override
 	public void init() {
 		studentDAO = new studentDAO();
 		facultyDAO = new FacultyDAO();
 		studentReviewDAO = new StudentReviewDAO();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -110,9 +113,9 @@ public class StudentPageServlet extends HttpServlet {
 	 * dispatcher = request.getRequestDispatcher("studentSignup");
 	 * request.setAttribute("Student", existingStudent); common(request, response,
 	 * studentID);
-	 * 
+	 *
 	 * dispatcher.forward(request, response);
-	 * 
+	 *
 	 * }
 	 */
 
@@ -202,7 +205,7 @@ public class StudentPageServlet extends HttpServlet {
 		String Department = request.getParameter("Department");
 		int Year = Integer.parseInt(request.getParameter("Year"));
 		String batch = request.getParameter("Batch");
-		batch = ((Year-1) % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);;
+		batch = ((Year-1) % 100) + Department.substring(0, 2) + ((batch.length() == 1) ? "0" + batch : batch);
 		String role = request.getParameter("Role");
 		String ContactNumber = request.getParameter("ContactNumber");
 
